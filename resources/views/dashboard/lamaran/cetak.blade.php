@@ -77,13 +77,13 @@
     <div class="container">
         <div class="row">
             <div class="column">
-                <img src="" alt="Logo Instansi" style="width:100px; margin-top: 40px;" height="60px">
+                <img src="data:image/png;base64,{{ $logoBKK }}" alt="Logo Instansi" style="width:100px; margin-top: 40px;" height="60px">
             </div>
             <div class="column">
                 <h2>BKK SMK KORPRI MAJALENGKA</h2>
             </div>
             <div class="column">
-                <img src="" alt="Logo Instansi" style="width:100px; margin-top: 20px;" height="95px">
+                <img src="data:image/png;base64,{{ $logoSekolah }}" alt="Logo Instansi" style="width:100px; margin-top: 20px;" height="95px">
             </div>
         </div>
         <hr style="width: 85%; text-align: center;">
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="column2">
-                <img src="" alt="Foto Peserta" style="width:100px; height:100px;">
+                <img src="data:image/png;base64,{{ $fotoPeserta }}" alt="Foto Peserta" style="width:100px; height:100px;">
             </div>
         </div>
     

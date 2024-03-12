@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12 mx-auto d-block">
                 <div class="card my-5">
-                    <img src="{{ asset('gambarlowongan/'.$lowongan->gambar) }}" alt="" class="img-fluid" style="width: 1110px; height: 300px; object-fit:cover;"> 
+                    <img src="{{ asset('storage/'.$lowongan->gambar) }}" alt="" class="img-fluid" style="width: 1110px; height: 300px; object-fit:cover;"> 
                     <div class="card-body py-5">
                         <h1>{{ $lowongan->judul }}</h1>
                         <div class="row">
@@ -22,10 +22,14 @@
                                 <p class="mb-2"><i class="bi bi-stopwatch"></i>  Sisa Waktu : {{ $diff->days }} hari {{ $diff->h }} Jam</p>
                             </div>
                             <div class="col-md-2">
-                                @if ($diff->days > 0)
-                                    <a href="/dashboard/lowongan-tersedia/" class="btn btn-sm btn-success mt-3 text-decoration-none">Daftar</a>
+                                @if($lowongan->pendaftars->contains('user_id', Auth::id()))
+                                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-square"> </i>Anda sudah mendaftar</button>
                                 @else
-                                    <button href="/" class="btn btn-sm btn-danger mt-3 text-decoration-none">Lowongan Ditutup</button>
+                                    @if($diff->days > 0)
+                                        <a href="/dashboard/lowongan-tersedia/daftar/{{ $lowongan->slug }}" class="btn btn-success btn-sm"><i class="fas fa-plus" title="Daftar"></i> Daftar</a>
+                                    @else
+                                        <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-square"> </i>Pendaftaran Telah Berakhir</button>
+                                    @endif
                                 @endif
                                 
                             </div>

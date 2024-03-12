@@ -34,7 +34,7 @@
                     @endphp
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('gambarlowongan/'.$lowongan->gambar) }}" alt="gambar-perusahaan" style="width: 70px"; height="50px"></td>
+                            <td><img src="{{ asset('storage/'.$lowongan->gambar) }}" alt="gambar-perusahaan" style="width: 70px"; height="50px"></td>
                             <td>{{ $lowongan->perusahaan }}</td>
                             <td>{{ $lowongan->posisi }}</td>
                             <td>{{ $lowongan->batas_waktu }}</td>

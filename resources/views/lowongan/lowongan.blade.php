@@ -1,9 +1,9 @@
-@extends('tampilan.apputama')
+{{-- @extends('tampilan.apputama')
 @section('title', 'Lowongan Terbaru')
 @section('subtitle', 'Halaman Seluruh Lowongan Terbaru')
     
 @section('content')
-{{-- <section id="hero" class="hero d-flex align-items-center">
+<section id="hero" class="hero d-flex align-items-center">
     <div class="container">
       <div class="row d-flex justify-content-between">
         <div class="section-header">
@@ -24,7 +24,7 @@
                 @endphp
                     <div class="col-md-4 mb-5" data-aos="fade-up" data-aos-delay="100">
                         <div class="card d-flex flex-column justify-content-between">
-                            <img src="{{ asset('gambarlowongan/'.$lowongan->gambar) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('storage/'.$lowongan->gambar) }}" class="card-img-top" alt="...">
                             <div class="card-body mt-auto">
                                 <h5 class="card-title">{{ $lowongan->judul }}</h5>
                                 <h6 class="card-text text-danger">
@@ -36,12 +36,16 @@
                                 </h6>
                             </div>
                             <div class="card-footer">
-                                <a href="/lowongan/{{ $lowongan->slug }}" class="text-decoration-none btn btn-sm btn-primary mt-3">Detail</a>
+                            @if($lowongan->pendaftars->contains('user_id', Auth::id()))
+                                    <a href="/dashboard/lowongan-tersedia/" class="btn btn-sm btn-danger mt-3 text-decoration-none">Anda sudah mendaftar</a>
+                                @else
+                                <a href="/lowongan/{{ $lowongan->slug }}" class="text-decoration-none btn btn-sm btn-primary btn-sm">Detail</a>
                                 @if ($diff->days > 0)
                                     <a href="/dashboard/lowongan-tersedia/" class="btn btn-sm btn-success mt-3 text-decoration-none">Daftar</a>
                                 @else
                                     <button href="/" class="btn btn-sm btn-danger mt-3 text-decoration-none">Lowongan Ditutup</button>
                                 @endif
+                            @endif
                             </div>
                           </div>
                     </div>
@@ -50,4 +54,4 @@
             {{ $lowongans->links() }}
         </div>
   </section>
-@endsection
+{{-- @endsection --}}

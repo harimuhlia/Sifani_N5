@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lowongan;
 use App\Models\Pendaftar;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,13 +80,13 @@ class DataPendaftarController extends Controller
 
     public function printPdf(Lowongan $lowongan)
     {
-        $logoBKKPath    = storage_path('/app/public/logo/LogoBKK.jpeg');
+        $logoBKKPath    = storage_path('/app/public/logo/LogoBkk.png');
         $logoBKK        = base64_encode(file_get_contents($logoBKKPath));
 
-        $logoSekolahPath    = storage_path('/app/public/logo/LogoSekolah.jpeg');
+        $logoSekolahPath    = storage_path('/app/public/logo/LogoSekolah.png');
         $logoSekolah        = base64_encode(file_get_contents($logoSekolahPath));
 
-        $pdf = PDF::loadView('dashboard.pendaftar.print-pdf', [
+        $pdf = PDF::loadview('dashboard.pendaftar.print-pdf', [
             'users'         => Auth::user(),
             'lowongan'      => $lowongan,
             'logoBKK'       => $logoBKK,

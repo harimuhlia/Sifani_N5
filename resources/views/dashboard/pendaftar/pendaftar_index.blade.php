@@ -30,7 +30,7 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <img src="{{ asset('gambarlowongan/'.$item->gambar) }}" alt="gambar-perusahaan" style="width: 110px"; height="70px">
+                        <img src="{{ asset('storage/'.$item->gambar) }}" alt="gambar-perusahaan" style="width: 110px"; height="70px">
                     </td>
                     <td>{{ $item->perusahaan }}</td>
                     <td>{{ $item->posisi }}</td>

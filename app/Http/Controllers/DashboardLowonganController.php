@@ -53,7 +53,6 @@ class DashboardLowonganController extends Controller
             'persyaratan'   => 'required',
             'gambar'        => 'image|file'
         ]);
-
         
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');

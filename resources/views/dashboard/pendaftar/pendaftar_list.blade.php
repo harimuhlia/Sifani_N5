@@ -12,7 +12,7 @@
                 <h3 class="card-title">Tabel Seluruh Data Informasi</h3>
               <div class="card-tools">
                 <button type="button" class="btn btn-primary btn-sm">{{ $pendaftar->perusahaan }}</button>
-                <a href="/dashboard/pendaftar/print-pdf/{{ $pendaftar->slug }}" type="button" class="btn btn-danger btn-sm"><i class="bi bi-filetype-pdf"></i> Print Pdf</a>
+                <a href="/dashboard/pendaftar/print-pdf/{{ $pendaftar->slug }}" type="button" class="btn btn-danger btn-sm" target="_blank"><i class="bi bi-filetype-pdf"></i> Print Pdf</a>
               </div>
             </div>
             <!-- /.card-header -->

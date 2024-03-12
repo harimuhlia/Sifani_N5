@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use function Ramsey\Uuid\v1;
 
@@ -39,26 +40,23 @@ class DashboardInformasiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'judulinformasi'    => 'required',
-            'deskripsi'         => 'required',
-            'uploadfile'        => 'mimes:xlsx,xls,doc,docs,pdf',
+        $validated = $request->validate([
+            'judulinformasi'=> 'required',
+            'deskripsi'     => 'required',
+            'fileupload'    => 'mimes:xlsx,xls,doc,docx,pdf'
         ]);
 
-        $informasi= New Informasi();
-        $informasi->user_id=Auth::user()->id;
-        $informasi->judulinformasi=$request->get('judulinformasi');
-        $informasi->excerpt= Str::limit(strip_tags($request->deskripsi), 30);
-        $informasi->deskripsi=$request->get('deskripsi');
-        if($request->hasFile('fileupload'))
-        {
+        if($request->hasFile('fileupload')){
             $file = $request->file('fileupload');
-            $extention = $file->getClientOriginalName();
-            $filename = time().'.'.$extention;
-            $file->move('fileinformasi/', $filename);
-            $informasi->fileupload = $filename;
+            $fileName = $file->getClientOriginalName();
+            Storage::disk('public')->put('fileinformasi/' .$fileName, file_get_contents($file));
+            $validated['fileupload'] = 'fileinformasi/' .$fileName;
         }
-        $informasi->save();
+
+        $validated['user_id'] = auth()->user()->id;
+        $validated['excerpt'] = Str::limit(strip_tags($request->deskripsi), 50);
+    
+        Informasi::create($validated);
 
         return redirect()->route('informasi.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
     }
@@ -90,33 +88,29 @@ class DashboardInformasiController extends Controller
      */
     public function update(Request $request, Informasi $informasi)
     {
-        $request->validate([
-            'judulinformasi'    => 'required',
-            'deskripsi'         => 'required',
-            'uploadfile'        => 'mimes:xlsx,xls,doc,docs,pdf',
-        ]);
+        $rules = [
+            'judulinformasi'=> 'required',
+            'deskripsi'     => 'required',
+            'fileupload'    => 'mimes:xlsx,xls,doc,docx,pdf'
+        ];
 
-        // $lowongan = Lowongan::findOrFail($lowongan);
-        // $lowongan= New Lowongan();
-        $informasi->user_id=Auth::user()->id;
-        $informasi->judulinformasi=$request->get('judulinformasi');
-        $informasi->excerpt= Str::limit(strip_tags($request->deskripsi), 30);
-        $informasi->deskripsi=$request->get('deskripsi');
-        if($request->hasFile('fileupload'))
-        {
-            $destination = 'fileinformasi/'.$informasi->fileupload;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
+        $validated = $request->validate($rules);
+
+        if($request->hasFile('fileupload')){
+            if($informasi->fileupload){
+                Storage::delete('public/'.$informasi->fileupload);
             }
             $file = $request->file('fileupload');
-            $extention = $file->getClientOriginalName();
-            $filename = time().'.'.$extention;
-            $file->move('fileinformasi/', $filename);
-            $informasi->fileupload = $filename;
-            
+            $fileName = $file->getClientOriginalName();
+            Storage::disk('public')->put('fileinformasi/'.$fileName, file_get_contents($file));
+            $validated['fileupload'] = 'fileinformasi/'.$fileName;
         }
-        $informasi->update();
+
+        $validated['user_id'] = auth()->user()->id;
+        $validated['excerpt'] = Str::limit(strip_tags($request->deskripsi), 50);
+
+        Informasi::where('id', $informasi->id)
+            ->update($validated);
         
         return redirect()->route('informasi.index')->with('success', 'Alhamdulillah Berhasil Diedit');
 
@@ -127,12 +121,10 @@ class DashboardInformasiController extends Controller
      */
     public function destroy(Informasi $informasi)
     {
-        // $lowongan    = Lowongan::find($lowongan);
-        $destination = 'fileinformasi/'.$informasi->fileupload;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
-            }
+        if ($informasi->fileupload) {
+            Storage::delete('public/'.$informasi->fileupload);
+        }
+    
         $informasi->delete();
         return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dihapus');
 
