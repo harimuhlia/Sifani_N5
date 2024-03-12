@@ -19,7 +19,7 @@
             <h4 class="mb-5">Batas Pendaftaran : {{ $lowongan->batas_waktu }}</h4>
 
             <div class="text-center">
-                <img src="{{ asset('gambarlowongan/'.$lowongan->gambar) }}" class="img-fluid mb-5" alt="gambar utama" style="overflow:hidden; border: 1px solid black">
+                <img src="{{ asset('storage/'.$lowongan->gambar) }}" class="img-fluid mb-5" alt="gambar utama" style="overflow:hidden; border: 1px solid black">
             </div>
 
             <h4>Persyaratan :</h4>

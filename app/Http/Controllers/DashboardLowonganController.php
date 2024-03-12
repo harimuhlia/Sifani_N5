@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lowongan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardLowonganController extends Controller
 {
@@ -43,31 +45,25 @@ class DashboardLowonganController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'judul'         => 'required',
             'perusahaan'    => 'required',
             'posisi'        => 'required',
             'batas_waktu'   => 'required',
             'persyaratan'   => 'required',
-            'gambar'        => 'image|max:1024|mimes:jpeg,bmp,png,jpg',
+            'gambar'        => 'image|file'
         ]);
 
-        $lowongan= New Lowongan();
-        $lowongan->user_id=Auth::user()->id;
-        $lowongan->judul=$request->get('judul');
-        $lowongan->perusahaan=$request->get('perusahaan');
-        $lowongan->posisi=$request->get('posisi');
-        $lowongan->batas_waktu=$request->get('batas_waktu');
-        $lowongan->persyaratan=$request->get('persyaratan');
-        if($request->hasFile('gambar'))
-        {
+        
+        if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
-            $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('gambarlowongan/', $filename);
-            $lowongan->gambar = $filename;
+            $fileName = $file->getClientOriginalName();
+            Storage::disk('public')->put('gambarlowongan/'.$fileName, file_get_contents($file));
+            $validated['gambar'] = 'gambarlowongan/'.$fileName;
         }
-        $lowongan->save();
+        
+        $validated['user_id'] = auth()->user()->id;
+        Lowongan::create($validated);
 
         return redirect()->route('lowongan.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
 
@@ -103,39 +99,33 @@ class DashboardLowonganController extends Controller
      */
     public function update(Request $request, Lowongan $lowongan)
     {
-        $request->validate([
+        $rules = [
             'judul'         => 'required',
             'perusahaan'    => 'required',
             'posisi'        => 'required',
             'batas_waktu'   => 'required',
             'persyaratan'   => 'required',
-        ]);
+            'gambar'        => 'image|file'
+        ];
 
-        // $lowongan = Lowongan::findOrFail($lowongan);
-        // $lowongan= New Lowongan();
-        $lowongan->user_id=Auth::user()->id;
-        $lowongan->judul=$request->get('judul');
-        $lowongan->perusahaan=$request->get('perusahaan');
-        $lowongan->posisi=$request->get('posisi');
-        $lowongan->batas_waktu=$request->get('batas_waktu');
-        $lowongan->persyaratan=$request->get('persyaratan');
-        if($request->hasFile('gambar'))
-        {
-            $destination = 'gambarlowongan/'.$lowongan->gambar;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
+        $validated = $request->validate($rules);
+
+        if($request->hasFile('gambar')){
+            if($lowongan->gambar){
+                Storage::delete('public/'.$lowongan->gambar);
             }
             $file = $request->file('gambar');
-            $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('gambarlowongan/', $filename);
-            $lowongan->gambar = $filename;
-            
+            $fileName = $file->getClientOriginalName();
+            Storage::disk('public')->put('gambarlowongan/'.$fileName, file_get_contents($file));
+            $validated['gambar'] = 'gambarlowongan/'.$fileName;
         }
-        $lowongan->update();
-        
-        return redirect()->route('lowongan.index')->with('success', 'Alhamdulillah Berhasil Diedit');
+
+        $validated['user_id'] = auth()->user()->id;
+
+        Lowongan::where('id', $lowongan->id)
+            ->update($validated);
+
+        return redirect()->route('lowongan.index')->with('success', 'Alhamdulillah Berhasil Diedit');  
     }
 
     /**
@@ -145,13 +135,12 @@ class DashboardLowonganController extends Controller
      */
     public function destroy(Lowongan $lowongan)
     {
-        // $lowongan    = Lowongan::find($lowongan);
-        $destination = 'gambarlowongan/'.$lowongan->gambar;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
-            }
+        if ($lowongan->gambar) {
+            Storage::delete('public/'.$lowongan->gambar);
+        }
+    
         $lowongan->delete();
+
         return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dihapus');
     }
 

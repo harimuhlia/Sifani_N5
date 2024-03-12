@@ -41,6 +41,7 @@
           </div>
           <!-- /.card -->
 </section>
+@include('sweetalert::alert')
 @endsection
 
 @section('javascript')
