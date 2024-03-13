@@ -33,25 +33,28 @@ Route::get('/informasi/{informasi:slug}', [InformasiController::class, 'show']);
 
 // Harus Login
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/dashboard/lowongan', DashboardLowonganController::class);
-Route::resource('/dashboard/informasi', DashboardInformasiController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware();
+Route::middleware(['auth', 'CekRole:Administrator'])->group(function () {
+    Route::resource('/dashboard/lowongan', DashboardLowonganController::class);
+    Route::resource('/dashboard/informasi', DashboardInformasiController::class);
 
-// Untuk Pendaftar
-Route::get('/dashboard/lowongan-tersedia/', [DashboardLowonganTersediaController::class, 'index']);
-Route::get('/dashboard/lowongan-tersedia/daftar/{lowongan:slug}', [DashboardLowonganTersediaController::class, 'daftar']);
-Route::POST('/dashboard/lowongan-tersedia', [DashboardLowonganTersediaController::class, 'store'])->name('store');
+    Route::get('/dashboard/pendaftar', [DataPendaftarController::class, 'index']);
+    Route::get('/dashboard/pendaftar/{lowongan:slug}', [DataPendaftarController::class, 'pendaftar']);
+    Route::get('/dashboard/pendaftar/print-pdf/{lowongan:slug}', [DataPendaftarController::class, 'printPdf']);
+    route::get('/dashboard/pendaftar/exportexcel/{id}', [DataPendaftarController::class, 'exportexcel'])->name('exportexcel');
+});
 
-Route::get('/dashboard/pendaftar', [DataPendaftarController::class, 'index']);
-Route::get('/dashboard/pendaftar/{lowongan:slug}', [DataPendaftarController::class, 'pendaftar']);
-Route::get('/dashboard/pendaftar/print-pdf/{lowongan:slug}', [DataPendaftarController::class, 'printPdf']);
-route::get('/dashboard/pendaftar/exportexcel/{id}', [DataPendaftarController::class, 'exportexcel'])->name('exportexcel');
+Route::middleware(['auth', 'CekRole:Alumni'])->group(function () {
+    // Untuk Pendaftar
+    Route::get('/dashboard/lowongan-tersedia/', [DashboardLowonganTersediaController::class, 'index']);
+    Route::get('/dashboard/lowongan-tersedia/daftar/{lowongan:slug}', [DashboardLowonganTersediaController::class, 'daftar']);
+    Route::POST('/dashboard/lowongan-tersedia', [DashboardLowonganTersediaController::class, 'store'])->name('store');
 
-Route::get('/dashboard/lamaran/', [DashboardLamaranController::class, 'index']);
-Route::get('/dashboard/lamaran/edit/{lowongan:slug}/', [DashboardLamaranController::class, 'edit']);
-Route::post('/dashboard/lamaran/', [DashboardLamaranController::class, 'update'])->name('update-lamaran');
-Route::delete('/dashboard/lamaran/{id}', [DashboardLamaranController::class, 'destroy']);
-Route::get('/dashboard/lamaran/cetak/{lowongan:slug}', [DashboardLamaranController::class, 'cetak']);
-
+    Route::get('/dashboard/lamaran/', [DashboardLamaranController::class, 'index']);
+    Route::get('/dashboard/lamaran/edit/{lowongan:slug}/', [DashboardLamaranController::class, 'edit']);
+    Route::post('/dashboard/lamaran/', [DashboardLamaranController::class, 'update'])->name('update-lamaran');
+    Route::delete('/dashboard/lamaran/{id}', [DashboardLamaranController::class, 'destroy']);
+    Route::get('/dashboard/lamaran/cetak/{lowongan:slug}', [DashboardLamaranController::class, 'cetak']);
+});
 
 // Route::get('/dashboard/lowongan/checkSlug', [DashboardLowonganController::class, 'checkSlug']);

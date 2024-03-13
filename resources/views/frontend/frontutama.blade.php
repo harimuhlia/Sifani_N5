@@ -7,8 +7,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>SIFANI - Sistem Informasi Alumni</title>
-  <meta content="Aplikasi Bursa Kerja Khusus Dan Treacer Study SMKN 5 Kabupaten Tangerang" name="description">
-  <meta content="BKK, Bursa Kerja Khusus, BKK SMK, BKK N5, Treacer Study, Alumni, BKK SMKN 5 Kabupaten Tangerang" name="keywords">
+  <meta content="Aplikasi Bursa Kerja Khusus Dan Tracer Study SMKN 5 Kabupaten Tangerang" name="description">
+  <meta content="BKK, Bursa Kerja Khusus, BKK SMK, BKK N5, Tracer Study, Alumni, BKK SMKN 5 Kabupaten Tangerang" name="keywords">
 
   @include('frontend.style')
 

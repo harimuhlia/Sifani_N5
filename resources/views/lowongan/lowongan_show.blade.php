@@ -8,8 +8,8 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1>Blog Details</h1>
-              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+              <h1>Detail Lowongan</h1>
+              <p class="mb-0">Di halaman ini anda bisa membaca dan mendapatkan informasi lebih lengkap terkait Lowongan Pekerjaan seperti, Posisi Jabatan, Perusahaan, dan lainnya.</p>
             </div>
           </div>
         </div>
@@ -18,7 +18,9 @@
         <div class="container">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Blog Details</li>
+            <li class="current">{{ $lowongan->perusahaan }}</li>
+            <li class="current">{{ $lowongan->posisi }}</li>
+            <li class="current">{{ $lowongan->judul }}</li>
           </ol>
         </div>
       </nav>
@@ -46,7 +48,7 @@
 
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ $lowongan->user->name }}</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">Sisa Waktu: {{ $diff->days }} Hari Lagi</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">{{ $lowongan->pendaftars->count() }} Pendaftar</a></li>
                 </ul>
@@ -82,10 +84,10 @@
             
         <div class="col card-header text-right">
         </div>
-            {{-- <div class="blog-author d-flex align-items-center">
-              <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
+            <div class="blog-author d-flex align-items-center">
+              <img src="{{ asset('Frontend') }}/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
               <div>
-                <h4>Jane Smith</h4>
+                <h4>{{ $lowongan->user->name }}</h4>
                 <div class="social-links">
                   <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
                   <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
@@ -95,7 +97,7 @@
                   Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
                 </p>
               </div>
-            </div> --}}
+            </div>
             <!-- End post author -->
 
             {{-- <div class="comments">
