@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardLowonganTersediaController;
 use App\Http\Controllers\DataPendaftarController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan']);
 Route::get('/lowongan/{lowongan:slug}', [LowonganController::class, 'show']);
