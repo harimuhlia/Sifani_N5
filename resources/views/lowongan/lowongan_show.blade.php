@@ -74,11 +74,15 @@
               </div><!-- End meta bottom -->
               <br>
             <div class="text-center">
-                @if($diff->days > 0)
-                    <a href="/dashboard/lowongan-tersedia/daftar/{{ $lowongan->slug }}" class="btn btn-success btn-sm mr-auto"><i class="fas fa-plus" title="Daftar"></i> Klik Untuk Daftar Melamar</a>
-                @else
-                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-square mr-auto"> </i>Pendaftaran Telah Berakhir</button>
-                @endif
+          @if($lowongan->pendaftars->contains('user_id', Auth::id()))
+              <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i> Anda sudah mendaftar</button>
+          @else
+              @if($diff->days > 0)
+                  <a href="/dashboard/lowongan-tersedia/daftar/{{ $lowongan->slug }}" class="btn btn-success btn-sm"><i class="fas fa-plus" title="Daftar"></i> Daftar Melamar</a>
+              @else
+                  <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times-circle"></i><i class="fas fa-times-circle"></i> Pendaftaran Telah Berakhir</button>
+              @endif
+          @endif
             </div>
             </article><!-- End post article -->
             
@@ -247,73 +251,27 @@
                 <h3 class="sidebar-title">Categories</h3>
                 <ul class="mt-3">
                   <li><a href="#">General <span>(25)</span></a></li>
-                  <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                  <li><a href="#">Travel <span>(5)</span></a></li>
-                  <li><a href="#">Design <span>(22)</span></a></li>
-                  <li><a href="#">Creative <span>(8)</span></a></li>
-                  <li><a href="#">Educaion <span>(14)</span></a></li>
                 </ul>
               </div><!-- End sidebar categories-->
 
               <div class="sidebar-item recent-posts">
                 <h3 class="sidebar-title">Recent Posts</h3>
-
+                @foreach ($lowongan as $item)
                 <div class="post-item">
-                  <img src="assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0">
+                  <img src="{{ asset('storage/'.$lowongan->gambar) }}" alt="" class="flex-shrink-0">
                   <div>
-                    <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
+                    <h4><a href="/lowongan/{{ $lowongan->slug }}">{{ $lowongan->judul }}</a></h4>
                     <time datetime="2020-01-01">Jan 1, 2020</time>
                   </div>
                 </div><!-- End recent post item-->
-
-                <div class="post-item">
-                  <img src="assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0">
-                  <div>
-                    <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                  </div>
-                </div><!-- End recent post item-->
-
-                <div class="post-item">
-                  <img src="assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0">
-                  <div>
-                    <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                  </div>
-                </div><!-- End recent post item-->
-
-                <div class="post-item">
-                  <img src="assets/img/blog/blog-recent-4.jpg" alt="" class="flex-shrink-0">
-                  <div>
-                    <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                  </div>
-                </div><!-- End recent post item-->
-
-                <div class="post-item">
-                  <img src="assets/img/blog/blog-recent-5.jpg" alt="" class="flex-shrink-0">
-                  <div>
-                    <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                    <time datetime="2020-01-01">Jan 1, 2020</time>
-                  </div>
-                </div><!-- End recent post item-->
-
+                @endforeach
+                
               </div><!-- End sidebar recent posts-->
 
               <div class="sidebar-item tags">
                 <h3 class="sidebar-title">Tags</h3>
                 <ul class="mt-3">
                   <li><a href="#">App</a></li>
-                  <li><a href="#">IT</a></li>
-                  <li><a href="#">Business</a></li>
-                  <li><a href="#">Mac</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Office</a></li>
-                  <li><a href="#">Creative</a></li>
-                  <li><a href="#">Studio</a></li>
-                  <li><a href="#">Smart</a></li>
-                  <li><a href="#">Tips</a></li>
-                  <li><a href="#">Marketing</a></li>
                 </ul>
               </div><!-- End sidebar tags-->
 

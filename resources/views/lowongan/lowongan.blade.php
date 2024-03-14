@@ -50,7 +50,12 @@
               <div class="post-meta">
                 <p class="post-author">{{ $lowongan->user->name }}</p>
                 <p class="post-date">
-                  <time datetime="2022-01-01">Jan 1, 2022</time>
+                  @if($diff->days > 0)
+                    <time datetime="2022-01-01">Sisa Waktu: {{ $diff->days }} Hari Lagi</time>
+                  @else
+                  <font color="ff0000">Lowongan Sudah Ditutup</font>
+                  @endif
+                  
                 </p>
               </div>
             </div>

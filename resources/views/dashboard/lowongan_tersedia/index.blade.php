@@ -41,12 +41,12 @@
                             <td>
                                 {{-- Mengecek apakah user yang sedang login sudah mendaftar di lowongan ini atau belum --}}
                                 @if($lowongan->pendaftars->contains('user_id', Auth::id()))
-                                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-square"> </i>Anda sudah mendaftar</button>
+                                    <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i> Anda sudah mendaftar</button>
                                 @else
                                     @if($diff->days > 0)
-                                        <a href="/dashboard/lowongan-tersedia/daftar/{{ $lowongan->slug }}" class="btn btn-success btn-sm"><i class="fas fa-plus" title="Daftar"></i> Daftar</a>
+                                        <a href="/dashboard/lowongan-tersedia/daftar/{{ $lowongan->slug }}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i> Daftar</a>
                                     @else
-                                        <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-square"> </i>Pendaftaran Telah Berakhir</button>
+                                        <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times-circle"></i> Pendaftaran Telah Berakhir</button>
                                     @endif
                                 @endif
                             </td>
