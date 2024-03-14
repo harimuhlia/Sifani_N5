@@ -8,7 +8,9 @@
         <div class="col-md-12 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    
+                @if($lowongan->pendaftars->contains('user_id', Auth::id()))
+                        <a href="/dashboard/lowongan-tersedia/" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i> Anda sudah mendaftar, Silakan Cek Disini!</a>
+                @else
                     <h6 class="h3 mb-3">Formulir Pendaftaran {{ $lowongan->perusahaan }}</h6>
                     <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
                         @csrf 
@@ -60,7 +62,8 @@
                             </div>
                         </div>
 
-                    </form>              
+                    </form> 
+                @endif             
                 </div>
             </div>
         </div>

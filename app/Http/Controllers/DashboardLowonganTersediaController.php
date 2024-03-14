@@ -22,10 +22,11 @@ class DashboardLowonganTersediaController extends Controller
     // Mengarahkan ke formulir untuk mendaftar
     public function daftar(Lowongan $lowongan)
     {
-        return view('dashboard.lowongan_tersedia.daftar', [
-            'users' => Auth::user(),
-            'lowongan' => $lowongan
-        ]);
+            return view('dashboard.lowongan_tersedia.daftar', [
+                'users' => Auth::user(),
+                'lowongan' => $lowongan
+            ]);
+        
     }
 
     // Proses create atau tambah pendaftaran

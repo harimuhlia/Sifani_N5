@@ -172,19 +172,34 @@
       <div class="container">
 
         <div class="row gy-4">
-
+          @foreach ($informasis as $informasi)
+          {{-- <div class="container mt-5" data-aos="fade-up">
+              <div class="row">
+                <div class="col-md-12 mx-auto">
+                  <div class="card">
+                    <div class="card-body">
+                      <h3 class="p-0">{{ $informasi->judulinformasi }}</h3>
+                      <p class="p-0"><i class="bi bi-clock"></i> {{ $informasi->created_at->diffForhumans() }}</p>
+                      <p class="p-0">{{ $informasi->excerpt }} <a href="/informasi/{{ $informasi->slug }}" style="text-decoration: none">Baca selengkapnya...</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div> --}}
           <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
               <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                <h4 class="title"><a href="/informasi/{{ $informasi->slug }}" class="stretched-link">{{ $informasi->judulinformasi }}</a></h4>
+                {{-- <p class="p-0"><i class="bi bi-clock"></i> {{ $informasi->created_at->diffForhumans() }}</p> --}}
+                <p class="p-0">{{ $informasi->excerpt }} <a href="/informasi/{{ $informasi->slug }}" style="text-decoration: none">Baca selengkapnya...</a></p>
               </div>
             </div>
           </div>
           <!-- End Service Item -->
+          @endforeach
 
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="200">
+          {{-- <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="200">
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
               <div>
@@ -232,7 +247,7 @@
                 <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
               </div>
             </div>
-          </div><!-- End Service Item -->
+          </div><!-- End Service Item --> --}}
 
         </div>
 
