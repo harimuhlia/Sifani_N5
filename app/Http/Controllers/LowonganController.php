@@ -22,4 +22,5 @@ class LowonganController extends Controller
             'lowongan'   => $lowongan,
         ]);
     }
+
 }
