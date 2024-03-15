@@ -256,13 +256,13 @@
 
             <div class="sidebar-item recent-posts">
               <div class="sidebar-item recent-posts">
-                <h3 class="sidebar-title">Recent Posts</h3>
-                @forelse ($lowongan as $item)
+                <h3 class="sidebar-title">Loker List</h3>
+                @forelse ($recentPost as $item)
                 <div class="post-item">
-                  <img src="{{ asset('storage/'.$lowongan->gambar) }}" alt="" class="flex-shrink-0">
+                  <img src="{{ asset('storage/'.$item->gambar) }}" alt="" class="flex-shrink-0">
                   <div>
-                    <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                    <h4><a href="/lowongan/{{ $lowongan->slug }}">{{ $item->judul }}</a></h4>
+                    <time datetime="2020-01-01">Sisa Waktu: {{ $diff->days }} Hari Lagi</time>
                   </div>
                 </div><!-- End recent post item-->
                 @empty

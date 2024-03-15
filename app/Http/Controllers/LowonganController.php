@@ -18,8 +18,10 @@ class LowonganController extends Controller
 
     public function show(Lowongan $lowongan)
     {
+        $recentPost = Lowongan::orderBy('id', 'DESC')->paginate(6);
         return view('lowongan.lowongan_show', [
-            'lowongan'   => $lowongan,
+            'lowongan'      => $lowongan,
+            'recentPost'    => $recentPost,
         ]);
     }
 

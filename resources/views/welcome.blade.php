@@ -161,11 +161,11 @@
     </section><!-- End Stats Section -->
 
     <!-- Services Section - Home Page -->
-    <section id="services" class="services">
+    <section id="informasi" class="services">
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
+        <h2>Informasi Terbaru</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
@@ -373,11 +373,11 @@
     </section><!-- End Faq Section -->
 
     <!-- Team Section - Home Page -->
-    <section id="team" class="team">
+    <section id="struktur" class="team">
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Team</h2>
+        <h2>Struktur Organisasi</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
@@ -513,14 +513,14 @@
     </section><!-- End Call-to-action Section -->
 
     <!-- Testimonials Section - Home Page -->
-    <section id="testimonials" class="testimonials">
+    <section id="testimoni" class="testimonials">
 
       <div class="container">
 
         <div class="row align-items-center">
 
           <div class="col-lg-5 info" data-aos="fade-up" data-aos-delay="100">
-            <h3>Testimonials</h3>
+            <h3>Testimoni Alumni</h3>
             <p>
               Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
               velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
@@ -664,8 +664,8 @@
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Recent Posts</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Loker Terbaru</h2>
+        <p>Pastikan Lowongan Kerja Yang Anda Cari Masih Dibuka, Jika Ada Yang Sesuai Dengan Minat Anda Untuk Segera Mendaftar</p>
       </div><!-- End Section Title -->
 
       <div class="container">
