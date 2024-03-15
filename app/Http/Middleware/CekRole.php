@@ -13,13 +13,12 @@ class CekRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $CekRole): Response
+    public function handle(Request $request, Closure $next, ...$CekRole): Response
     {
-        if ($request->user()->role == $CekRole) {
+        if(in_array($request->user()->role,$CekRole)){
             return $next($request);
         }
- 
-        return redirect()
-            ->to(route('login'));
+        return redirect('/login');
+
     }
 }

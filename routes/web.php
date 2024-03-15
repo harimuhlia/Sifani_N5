@@ -28,12 +28,18 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/lowongan', [LowonganController::class, 'lowongan']);
 Route::get('/lowongan/{lowongan:slug}', [LowonganController::class, 'show']);
 
-Route::get('/informasi', [InformasiController::class, 'informasi']);
-Route::get('/informasi/{informasi:slug}', [InformasiController::class, 'show']);
+// Route::get('/informasi', [InformasiController::class, 'informasi']);
+// Route::get('/informasi/{informasi:slug}', [InformasiController::class, 'show']);
 
 // Harus Login
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware();
+
+Route::middleware(['auth', 'CekRole:Administrator,Alumni'])->group(function () {
+    Route::get('/informasi/{informasi:slug}', [InformasiController::class, 'show']);
+    Route::get('/informasi', [InformasiController::class, 'informasi']);
+});
+
 Route::middleware(['auth', 'CekRole:Administrator'])->group(function () {
     Route::resource('/dashboard/lowongan', DashboardLowonganController::class);
     Route::resource('/dashboard/informasi', DashboardInformasiController::class);

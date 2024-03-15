@@ -24,7 +24,6 @@
                 <tr>
                   <th>No</th>
                   <th>Judul</th>
-                  <th>Perusahaan</th>
                   <th>Posisi</th>
                   <th>Batas Waktu</th>
                   <th>Opsi</th>
@@ -35,16 +34,15 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->judul }}</td>
-                    <td>{{ $item->perusahaan }}</td>
                     <td>{{ $item->posisi }}</td>
                     <td>{{ $item->batas_waktu }}</td>
                     <td>
-                        <a href="/dashboard/lowongan/{{ $item->slug }}" class="btn btn-success btn-sm">L</a>
-                        <a href="/dashboard/lowongan/{{ $item->slug }}/edit" class="btn btn-warning  btn-sm">E</i></a>
+                        <a href="/dashboard/lowongan/{{ $item->slug }}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
+                        <a href="/dashboard/lowongan/{{ $item->slug }}/edit" class="btn btn-warning  btn-sm"><i class="far fa-edit"></i></i></a>
                         <form id="{{ $item->slug }}" action="/dashboard/lowongan/{{ $item->slug }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus {{ $item->judul }} ?')">D</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus {{ $item->judul }} ?')"><i class="far fa-trash-alt"></i></button>
                             {{-- <div class="btn btn-danger mb-2 swal-confirm" type="submit" onclick="return confirm('Yakin Akan Menghapus {{ $item->judul }} ?')">D</i></div> --}}
                         </form>
                     </td>
@@ -55,7 +53,6 @@
                 <tr>
                   <th>No</th>
                   <th>Judul</th>
-                  <th>Perusahaan</th>
                   <th>Posisi</th>
                   <th>Batas Waktu</th>
                   <th>Opsi</th>

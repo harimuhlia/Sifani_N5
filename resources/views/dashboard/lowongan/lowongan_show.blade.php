@@ -16,6 +16,7 @@
           <!-- /.card-header -->
           <div class="card-body">
             <h1 class="mt-3">{{ $lowongan->judul }}</h1>
+            <h4 class="mb-5">Nama Perusahaan   : {{ $lowongan->perusahaan }}</h4>
             <h4 class="mb-5">Batas Pendaftaran : {{ $lowongan->batas_waktu }}</h4>
 
             <div class="text-center">

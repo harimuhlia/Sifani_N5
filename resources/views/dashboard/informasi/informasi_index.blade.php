@@ -37,12 +37,12 @@
                     <td>{{ $item->excerpt }}</td>
                     <td><a href="{{ asset('fileinformasi/'.$item->fileupload) }}">{{ basename($item->fileupload) }}</td>
                     <td>
-                        <a href="/dashboard/informasi/{{ $item->slug }}" class="btn btn-success btn-sm">L</a>
-                        <a href="/dashboard/informasi/{{ $item->slug }}/edit" class="btn btn-warning  btn-sm">E</i></a>
+                        <a href="/dashboard/informasi/{{ $item->slug }}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
+                        <a href="/dashboard/informasi/{{ $item->slug }}/edit" class="btn btn-warning  btn-sm"><i class="far fa-edit"></i></i></a>
                         <form id="{{ $item->slug }}" action="/dashboard/informasi/{{ $item->slug }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus {{ $item->judulinformasi }} ?')">D</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus {{ $item->judulinformasi }} ?')"><i class="far fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>  

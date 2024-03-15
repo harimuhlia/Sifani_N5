@@ -22,6 +22,7 @@
                   <th>Gambar</th>
                   <th>Perusahaan</th>
                   <th>Pekerjaan</th>
+                  <th>Jml. Pendaftar</th>
                   <th>Lihat Pendaftar</th>
                 </tr>
                 </thead>
@@ -35,7 +36,11 @@
                     <td>{{ $item->perusahaan }}</td>
                     <td>{{ $item->posisi }}</td>
                     <td>
-                        <a href="/dashboard/pendaftar/{{ $item->slug }}" class="btn btn-success btn-sm">Lihat Pendaftar</a>
+                      <button type="button" class="btn btn-secondary btn-sm"><span class="badge badge-light">{{ $item->pendaftars->count() }}</span> Pendaftar
+                      </button>
+                    </td>
+                    <td>
+                        <a href="/dashboard/pendaftar/{{ $item->slug }}" class="btn btn-success btn-sm"><i class="far fa-eye"></i> Lihat</a>
                     </td>
                 </tr>  
                   @endforeach
@@ -46,6 +51,7 @@
                     <th>Gambar</th>
                     <th>Perusahaan</th>
                     <th>Pekerjaan</th>
+                    <th>Jml. Pendaftar</th>
                     <th>Lihat Pendaftar</th>
                 </tr>
                 </tfoot>
