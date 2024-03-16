@@ -35,7 +35,7 @@
                   <input type="file" class="form-control" name="gambar">
             </div>
             <div class="modal-footer justify-content-between">
-                <a href="{{ route('lowongan.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-rolleback" title="Kembali"></i> Kembali</a>
+                <a href="{{ route('lowongan.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
               </form>
           </div>

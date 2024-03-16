@@ -35,7 +35,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->judul }}</td>
                     <td>{{ $item->posisi }}</td>
-                    <td>{{ $item->batas_waktu }}</td>
+                    <td>{{ Carbon\Carbon::createFromTimeString($item->batas_waktu)->format('d F Y') }}</td>
                     <td>
                         <a href="/dashboard/lowongan/{{ $item->slug }}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
                         <a href="/dashboard/lowongan/{{ $item->slug }}/edit" class="btn btn-warning  btn-sm"><i class="far fa-edit"></i></i></a>
