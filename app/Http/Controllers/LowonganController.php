@@ -10,7 +10,7 @@ class LowonganController extends Controller
 {
     public function lowongan()
     {
-        $lowongans = Lowongan::orderBy('id', 'DESC')->paginate(6);
+        $lowongans = Lowongan::orderBy('id', 'DESC')->paginate(9);
         return view('lowongan.lowongan',[
             'lowongans' => $lowongans
         ]);

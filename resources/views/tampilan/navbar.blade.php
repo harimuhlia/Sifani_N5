@@ -30,7 +30,8 @@
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-server"></i> Menu Utama</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="/dashboard/lowongan-tersedia/" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Perusahaan</a></li>
-              <li><a href="/dashboard/lamaran/" class="dropdown-item"><i class="fas fa-user"></i> Lamaran Anda</a></li>
+              <li><a href="/dashboard/lamaran/" class="dropdown-item"><i class="far fa-file"></i> Lamaran Anda</a></li>
+              <li><a href="/informasi" class="dropdown-item"><i class="fas fa-volume-up"></i> Info Terbaru</a></li>
             </ul>
           </li>
           @endif

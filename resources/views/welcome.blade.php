@@ -4,9 +4,7 @@
 
     <!-- Hero Section - Home Page -->
     <section id="hero" class="hero">
-
-      <img src="{{ asset('Frontend') }}//img/hero-bg.jpg" alt="" data-aos="fade-in">
-
+      <img src="{{ asset('Frontend') }}/img/hero-bg2.jpg" alt="" data-aos="fade-in">
       <div class="container">
         <div class="row">
           <div class="col-lg-10">
@@ -68,9 +66,9 @@
         <div class="row align-items-xl-center gy-5">
 
           <div class="col-xl-5 content">
-            <h3>About Us</h3>
-            <h2>Ducimus rerum libero reprehenderit cumque</h2>
-            <p>Ipsa sint sit. Quis ducimus tempore dolores impedit et dolor cumque alias maxime. Enim reiciendis minus et rerum hic non. Dicta quas cum quia maiores iure. Quidem nulla qui assumenda incidunt voluptatem tempora deleniti soluta.</p>
+            <h3>Tentang BKK</h3>
+            <h2>Bursa Kerja Khusus (BKK) SMKN 5 Kab. Tangerang</h2>
+            <p>Adalah sebagai wadah bagi alumni SMKN 5 Kabupaten Tangerang yang membutuhkan informasi lowongan pekerjaan dan peningkatan mutu lulusan melalui pelatihan-pelatihan.</p>
             <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
@@ -80,32 +78,32 @@
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box">
                   <i class="bi bi-buildings"></i>
-                  <h3>Eius provident</h3>
-                  <p>Magni repellendus vel ullam hic officia accusantium ipsa dolor omnis dolor voluptatem</p>
+                  <h3>Bekerja</h3>
+                  <p>bertujuan untuk mempersiapkan peserta didik agar dapat langsung masuk ke dunia kerja yang diinginkan</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
                   <i class="bi bi-clipboard-pulse"></i>
-                  <h3>Rerum aperiam</h3>
-                  <p>Autem saepe animi et aut aspernatur culpa facere. Rerum saepe rerum voluptates quia</p>
+                  <h3>Wirausa</h3>
+                  <p>Membimbing dan menyalurkan setiap Alumni untuk mengikuti pelatihan-pelatihan keterampilan.</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box">
                   <i class="bi bi-command"></i>
-                  <h3>Veniam omnis</h3>
-                  <p>Omnis perferendis molestias culpa sed. Recusandae quas possimus. Quod consequatur corrupti</p>
+                  <h3>Melanjutkan</h3>
+                  <p>Senantiasa menjembatani setiap Alumni yang akan terus melanjutkan Study ke Kampus pilihannya</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="icon-box">
                   <i class="bi bi-graph-up-arrow"></i>
-                  <h3>Delares sapiente</h3>
-                  <p>Sint et dolor voluptas minus possimus nostrum. Reiciendis commodi eligendi omnis quideme lorenda</p>
+                  <h3>Tracer Study</h3>
+                  <p>Mendata setiap Alumni untuk tujuan mengetahui hasil pendidikan dalam bentuk transisi dari dunia pendidikan ke dunia usaha dan industri</p>
                 </div>
               </div> <!-- End Icon Box -->
 
@@ -120,42 +118,39 @@
     <!-- Stats Section - Home Page -->
     <section id="stats" class="stats">
 
-      <img src="{{ asset('Frontend') }}//img/stats-bg.jpg" alt="" data-aos="fade-in">
+      <img src="{{ asset('Frontend') }}//img/stats-bg2.jpg" alt="" data-aos="fade-in">
 
       <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
-
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $pendaftarCount }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Pendaftar</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $lowonganCount }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Lowongan Kerja</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $informasiCount }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Informasi</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $alumniCount }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Alumni</p>
             </div>
           </div><!-- End Stats Item -->
-
         </div>
-
       </div>
 
     </section><!-- End Stats Section -->
@@ -166,7 +161,7 @@
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Informasi Terbaru</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Segala Informasi Terbaru akan kami sampaikan disini seperti, Jadwal Rekruitmen, Wawancara dan lain-lain.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -378,7 +373,7 @@
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Struktur Organisasi</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Struktur Organisasi Bursa Kerja Khusus (BKK) SMK Negeri 5 Kabupaten Tangerang</p>
       </div><!-- End Section Title -->
 
       <div class="container">

@@ -35,7 +35,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->judulinformasi }}</td>
                     <td>{{ $item->excerpt }}</td>
-                    <td><a href="{{ asset('fileinformasi/'.$item->fileupload) }}">{{ basename($item->fileupload) }}</td>
+                    <td><a href="{{ asset('storage/'.$item->fileupload) }}">{{ basename($item->fileupload) }}</td>
                     <td>
                         <a href="/dashboard/informasi/{{ $item->slug }}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
                         <a href="/dashboard/informasi/{{ $item->slug }}/edit" class="btn btn-warning  btn-sm"><i class="far fa-edit"></i></i></a>

@@ -35,12 +35,12 @@
                     <td>{{ $item->lowongan->perusahaan}}</td>
                     <td>{{ $item->lowongan->posisi}}</td> 
                     <td>
-                        <a href="/dashboard/lamaran/cetak/{{ $item->lowongan->slug }}" target="_blank" class="btn btn-success btn-sm">Print</a>
-                        <a href="/dashboard/lamaran/edit/{{ $item->lowongan->slug }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/dashboard/lamaran/cetak/{{ $item->lowongan->slug }}" target="_blank" class="btn btn-success btn-sm"><i class="fas fa-print"></i> Print</a>
+                        <a href="/dashboard/lamaran/edit/{{ $item->lowongan->slug }}" class="btn btn-warning btn-sm"><i class="far fa-edit"></i> Edit</a>
                         <form id="{{ $item->id }}" action="/dashboard/lamaran/{{ $item->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus Lamaran Anda Di {{ $item->lowongan->perusahaan }} ?')">Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus Lamaran Anda Di {{ $item->lowongan->perusahaan }} ?')"><i class="far fa-trash-alt"></i> Hapus</button>
                             {{-- <div type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus Lamaran Anda Di {{ $item->lowongan->perusahaan }} ?')" data-form="{{ $item->id }}">Hapus</div> --}}
                         </form>
                     </td>         
