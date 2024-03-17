@@ -79,14 +79,14 @@
                 <div class="icon-box">
                   <i class="bi bi-buildings"></i>
                   <h3>Bekerja</h3>
-                  <p>bertujuan untuk mempersiapkan peserta didik agar dapat langsung masuk ke dunia kerja yang diinginkan</p>
+                  <p>Bertujuan untuk mempersiapkan peserta didik agar dapat langsung masuk ke dunia kerja yang diinginkan</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
                   <i class="bi bi-clipboard-pulse"></i>
-                  <h3>Wirausa</h3>
+                  <h3>Wirausaha</h3>
                   <p>Membimbing dan menyalurkan setiap Alumni untuk mengikuti pelatihan-pelatihan keterampilan.</p>
                 </div>
               </div> <!-- End Icon Box -->
