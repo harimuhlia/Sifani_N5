@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/visimisi', [WelcomeController::class, 'visiMisi']);
+Route::get('/testimoni', [WelcomeController::class, 'testimoni']);
+Route::get('/testimoni/{testimoni:slug}', [WelcomeController::class, 'testimoniShow']);
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan']);
 Route::get('/lowongan/{lowongan:slug}', [LowonganController::class, 'show']);

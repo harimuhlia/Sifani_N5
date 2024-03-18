@@ -68,7 +68,7 @@
           <div class="col-xl-5 content">
             <h3>Tentang BKK</h3>
             <h2>Bursa Kerja Khusus (BKK) SMKN 5 Kab. Tangerang</h2>
-            <p>Adalah sebagai wadah bagi alumni SMKN 5 Kabupaten Tangerang yang membutuhkan informasi lowongan pekerjaan dan peningkatan mutu lulusan melalui pelatihan-pelatihan.</p>
+            <p>Adalah sebagai wadah bagi alumni SMKN 5 Kabupaten Tangerang yang membutuhkan informasi lowongan pekerjaan dan peningkatan mutu lulusan melalui pelatihan-pelatihan dan rekruitmen.</p>
             <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
           </div>
 

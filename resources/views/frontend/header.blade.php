@@ -7,7 +7,7 @@
         <span>N5</span> --}}
 
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <a href="/"><img src="{{ asset('Frontend') }}/img/logo.png" class="logo d-flex align-items-center me-auto me-xl-0" style="width:200px;height:70px;" alt="Logo BKK">
+        <a href="/"><img src="{{ asset('Frontend') }}/img/logo.png" class="logo d-flex align-items-center me-auto me-xl-0" style="width:200px;height:60px;" alt="Logo BKK">
       </a>
 
       <!-- Nav Menu -->

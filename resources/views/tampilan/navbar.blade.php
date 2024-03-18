@@ -21,8 +21,10 @@
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-server"></i> Menu Utama</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="{{ route('lowongan.index') }}" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Lowongan</a></li>
-              <li><a href="{{ route('informasi.index') }}" class="dropdown-item"><i class="fas fa-user"></i> Informasi</a></li>
+              <li><a href="{{ route('informasi.index') }}" class="dropdown-item"><i class="fas fa-volume-up"></i> Informasi</a></li>
               <li><a href="/dashboard/pendaftar" class="dropdown-item"><i class="fas fa-user"></i> Pendaftar</a></li>
+              <li><a href="/dashboard/visimisi" class="dropdown-item"><i class="far fa-file-word"></i> Visi Misi</a></li>
+              <li><a href="#" class="dropdown-item"><i class="far fa-envelope"></i> Kotak Masuk</a></li>
             </ul>
           </li>
           @else
@@ -36,10 +38,10 @@
           </li>
           @endif
           <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fas fa-box-open"></i> Tracer</a>
+            <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Tracer</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Tabel Hasil</a>
+            <a href="#" class="nav-link"><i class="fas fa-box-open"></i> Testimoni</a>
           </li>
           {{-- <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-book-open"></i> Laporan</a>

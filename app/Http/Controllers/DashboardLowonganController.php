@@ -143,9 +143,9 @@ class DashboardLowonganController extends Controller
         return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dihapus');
     }
 
-    public function checkSlug(Request $request)
-    {
-        $slug = SlugService::createSlug(Lowongan::class, 'slug', $request->judul);
-        return response()->json(['slug' => $slug]);
-    }
+    // public function checkSlug(Request $request)
+    // {
+    //     $slug = SlugService::createSlug(Lowongan::class, 'slug', $request->judul);
+    //     return response()->json(['slug' => $slug]);
+    // }
 }

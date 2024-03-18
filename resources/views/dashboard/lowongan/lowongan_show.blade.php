@@ -42,6 +42,10 @@
                       <td>: {{ $lowongan->posisi }}</td>
                     </tr>
                     <tr data-widget="expandable-table" aria-expanded="false">
+                      <td>Persyaratan</td>
+                      <td> {!! $lowongan->persyaratan !!}</td>
+                    </tr>
+                    <tr data-widget="expandable-table" aria-expanded="false">
                       <td>Foto Loker</td>
                       <td>
                         <img src="{{ asset('storage/'.$lowongan->gambar) }}" class="img-fluid mb-5" alt="gambar utama" style="overflow:hidden; border: 1px solid black" width="700px">
