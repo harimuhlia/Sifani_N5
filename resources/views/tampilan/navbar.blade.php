@@ -23,8 +23,8 @@
               <li><a href="{{ route('lowongan.index') }}" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Lowongan</a></li>
               <li><a href="{{ route('informasi.index') }}" class="dropdown-item"><i class="fas fa-volume-up"></i> Informasi</a></li>
               <li><a href="/dashboard/pendaftar" class="dropdown-item"><i class="fas fa-user"></i> Pendaftar</a></li>
-              <li><a href="/dashboard/visidanmisi" class="dropdown-item"><i class="far fa-file-word"></i> Visi Misi</a></li>
-              <li><a href="#" class="dropdown-item"><i class="far fa-envelope"></i> Kotak Masuk</a></li>
+              <li><a href="{{ route('visidanmisi.index') }}" class="dropdown-item"><i class="far fa-window-restore"></i> Visi Dan Misi</a></li>
+              <li><a href="{{ route('inbox.index') }}" class="dropdown-item"><i class="far fa-envelope"></i> Kotak Masuk</a></li>
             </ul>
           </li>
           @else

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardInboxController;
 use App\Http\Controllers\DashboardInformasiController;
 use App\Http\Controllers\DashboardLamaranController;
 use Illuminate\Support\Facades\Auth;
@@ -25,9 +26,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'index']);
-Route::get('/visimisi', [WelcomeController::class, 'visiMisi']);
-Route::get('/testimoni', [WelcomeController::class, 'testimoni']);
-Route::get('/testimoni/{testimoni:slug}', [WelcomeController::class, 'testimoniShow']);
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan']);
 Route::get('/lowongan/{lowongan:slug}', [LowonganController::class, 'show']);
@@ -48,6 +46,7 @@ Route::middleware(['auth', 'CekRole:Administrator'])->group(function () {
     Route::resource('/dashboard/lowongan', DashboardLowonganController::class);
     Route::resource('/dashboard/informasi', DashboardInformasiController::class);
     Route::resource('dashboard/visidanmisi', DashboardVisidanmisiController::class);
+    Route::resource('dashboard/inbox', DashboardInboxController::class);
 
     Route::get('/dashboard/pendaftar', [DataPendaftarController::class, 'index']);
     Route::get('/dashboard/pendaftar/{lowongan:slug}', [DataPendaftarController::class, 'pendaftar']);

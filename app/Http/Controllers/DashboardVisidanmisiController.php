@@ -36,7 +36,7 @@ class DashboardVisidanmisiController extends Controller
             'judul'     => 'required',
             'visi'      => 'required',
             'misi'      => 'required',
-            'motivasi'  => 'required',
+            'proker'  => 'required',
         ]);
         
         Visidanmisi::create($validated);
@@ -71,7 +71,7 @@ class DashboardVisidanmisiController extends Controller
             'judul'     => 'required',
             'visi'      => 'required',
             'misi'      => 'required',
-            'motivasi'  => 'required',
+            'proker'  => 'required',
         ];
 
         $validated = $request->validate($rules);

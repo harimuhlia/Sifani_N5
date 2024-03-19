@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('visidanmisis', function (Blueprint $table) {
+        Schema::create('inboxes', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('nama');
+            $table->string('email')->unique();
+            $table->string('subjek');
             $table->string('slug')->unique();
-            $table->text('visi');
-            $table->text('misi');
-            $table->text('proker');
+            $table->text('isipesan');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('visidanmisis');
+        Schema::dropIfExists('inboxes');
     }
 };

@@ -106,14 +106,32 @@
                   <p>Mendata setiap Alumni untuk tujuan mengetahui hasil pendidikan dalam bentuk transisi dari dunia pendidikan ke dunia usaha dan industri</p>
                 </div>
               </div> <!-- End Icon Box -->
-
             </div>
           </div>
-
         </div>
       </div>
-
     </section><!-- End About Section -->
+
+    <!-- Services Section - Home Page -->
+    <section id="VisiMisi" class="services">
+
+      <!--  Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Visi Misi BKK</h2>
+        <p>Segala Informasi Terbaru akan kami sampaikan disini seperti, Jadwal Rekruitmen, Wawancara dan lain-lain.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          @foreach ($visimisi as $visimisi)
+          <blockquote class="blockquote">
+            <p class="mb-0">{{ $visimisi->visi }}</p>
+          </blockquote>
+          @endforeach
+        </div>
+      </div>
+    </section><!-- End Services Section -->
 
     <!-- Stats Section - Home Page -->
     <section id="stats" class="stats">
@@ -168,19 +186,6 @@
 
         <div class="row gy-4">
           @foreach ($informasis as $informasi)
-          {{-- <div class="container mt-5" data-aos="fade-up">
-              <div class="row">
-                <div class="col-md-12 mx-auto">
-                  <div class="card">
-                    <div class="card-body">
-                      <h3 class="p-0">{{ $informasi->judulinformasi }}</h3>
-                      <p class="p-0"><i class="bi bi-clock"></i> {{ $informasi->created_at->diffForhumans() }}</p>
-                      <p class="p-0">{{ $informasi->excerpt }} <a href="/informasi/{{ $informasi->slug }}" style="text-decoration: none">Baca selengkapnya...</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div> --}}
           <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
@@ -193,61 +198,8 @@
           </div>
           <!-- End Service Item -->
           @endforeach
-
-          {{-- <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
-              <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Dolor Sitema</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
-              <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Sed ut perspiciatis</a></h4>
-                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
-              <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Magni Dolores</a></h4>
-                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
-              <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Nemo Enim</a></h4>
-                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
-              <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Eiusmod Tempor</a></h4>
-                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-              </div>
-            </div>
-          </div><!-- End Service Item --> --}}
-
         </div>
-
       </div>
-
     </section><!-- End Services Section -->
 
     <!-- Features Section - Home Page -->
@@ -711,7 +663,7 @@
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Silakan Datang atau Hubungi kami dan Kirim Pesan Spesifik Melalui Form Kontak</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -762,44 +714,33 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form action="{{ action('App\Http\Controllers\DashboardInboxController@store')}}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              @csrf
               <div class="row gy-4">
-
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama Lengkap Anda" required>
                 </div>
-
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Aktif Anda" required>
                 </div>
-
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  <input type="text" class="form-control @error('subjek') is-invalid @enderror" name="subjek" placeholder="Perihal Yang Akan Ditanyakan" required>
                 </div>
-
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <textarea class="form-control @error('isipesan') is-invalid @enderror" name="isipesan" rows="6" placeholder="Silakan isi pesan anda" required></textarea>
                 </div>
-
                 <div class="col-md-12 text-center">
+                  
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
 
                   <button type="submit">Send Message</button>
                 </div>
-
               </div>
             </form>
           </div><!-- End Contact Form -->
-
         </div>
-
       </div>
-
     </section><!-- End Contact Section -->
-@endsection
-
-@section('javascript')
-
 @endsection

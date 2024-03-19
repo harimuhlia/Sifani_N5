@@ -27,7 +27,7 @@
                   <label for="persyaratan">Misi</label>
                   <textarea class="textarea" rows="3" id="misi" name="misi">{{ old('misi', $visidanmisi->misi) }}</textarea>
                   <label for="persyaratan">Motivasi</label>
-                  <textarea class="textarea" rows="3" id="motivasi" name="motivasi">{{ old('motivasi', $visidanmisi->motivasi) }}</textarea>
+                  <textarea class="textarea" rows="3" id="motivasi" name="motivasi">{{ old('motivasi', $visidanmisi->proker) }}</textarea>
             </div>
             <div class="modal-footer justify-content-between">
               <a href="{{ route('visidanmisi.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>

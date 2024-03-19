@@ -25,8 +25,8 @@
                   <input class="form-control" type="text" id="visi" name="visi" class="@error('visi') is-invalid @enderror">
                   <label for="persyaratan">Misi</label>
                   <textarea class="textarea" rows="3" name="misi"></textarea>
-                  <label for="persyaratan">Motivasi</label>
-                  <textarea class="textarea" rows="3" name="motivasi"></textarea>
+                  <label for="persyaratan">Program Kerja</label>
+                  <textarea class="textarea" rows="3" name="proker"></textarea>
             </div>
             <div class="modal-footer justify-content-between">
               <a href="{{ route('visidanmisi.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>

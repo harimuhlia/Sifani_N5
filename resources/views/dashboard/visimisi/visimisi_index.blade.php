@@ -37,8 +37,8 @@
                   <td> {!! $visimisi->misi !!}</td>
                 </tr>
                 <tr data-widget="expandable-table" aria-expanded="false">
-                  <td>Motivasi</td>
-                  <td> {!! $visimisi->motivasi !!}</td>
+                  <td>Program Kerja</td>
+                  <td> {!! $visimisi->proker !!}</td>
                 </tr>
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td>Action</td>
