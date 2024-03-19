@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Http\Controllers\DashboardLowonganController;
 use App\Http\Controllers\DashboardLowonganTersediaController;
+use App\Http\Controllers\DashboardVisidanmisiController;
 use App\Http\Controllers\DataPendaftarController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LowonganController;
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'CekRole:Administrator,Alumni'])->group(function () {
 Route::middleware(['auth', 'CekRole:Administrator'])->group(function () {
     Route::resource('/dashboard/lowongan', DashboardLowonganController::class);
     Route::resource('/dashboard/informasi', DashboardInformasiController::class);
+    Route::resource('dashboard/visidanmisi', DashboardVisidanmisiController::class);
 
     Route::get('/dashboard/pendaftar', [DataPendaftarController::class, 'index']);
     Route::get('/dashboard/pendaftar/{lowongan:slug}', [DataPendaftarController::class, 'pendaftar']);

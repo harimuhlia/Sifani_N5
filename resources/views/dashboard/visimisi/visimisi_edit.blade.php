@@ -16,21 +16,21 @@
               </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{ route('visimisi.update', $visimisi->slug )}}" method="POST">
+            <form action="{{ route('visidanmisi.update', $visidanmisi->slug )}}" method="POST">
                 @method("PUT")
                 @csrf
                 <div class="card-body">
                   <label for="JudulLowongan">Judul Visi Misi</label>
-                  <input class="form-control" type="text" id="judul" value="{{ old('judul', $visimisi->judul) }}" name="judul" class="@error('judul') is-invalid @enderror">
+                  <input class="form-control" type="text" id="judul" value="{{ old('judul', $visidanmisi->judul) }}" name="judul" class="@error('judul') is-invalid @enderror">
                   <label for="posisi">Visi</label>
-                  <input class="form-control" type="text" id="visi" value="{{ old('visi', $visimisi->visi) }}" name="visi" class="@error('visi') is-invalid @enderror">
+                  <input class="form-control" type="text" id="visi" value="{{ old('visi', $visidanmisi->visi) }}" name="visi" class="@error('visi') is-invalid @enderror">
                   <label for="persyaratan">Misi</label>
-                  <textarea class="textarea" rows="3" id="misi" name="misi">{{ old('misi', $visimisi->misi) }}</textarea>
+                  <textarea class="textarea" rows="3" id="misi" name="misi">{{ old('misi', $visidanmisi->misi) }}</textarea>
                   <label for="persyaratan">Motivasi</label>
-                  <textarea class="textarea" rows="3" id="motivasi" name="motivasi">{{ old('motivasi', $visimisi->motivasi) }}</textarea>
+                  <textarea class="textarea" rows="3" id="motivasi" name="motivasi">{{ old('motivasi', $visidanmisi->motivasi) }}</textarea>
             </div>
             <div class="modal-footer justify-content-between">
-              <a href="{{ route('visimisi.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
+              <a href="{{ route('visidanmisi.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
               <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
               </form>
           </div>

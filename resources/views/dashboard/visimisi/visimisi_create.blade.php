@@ -16,7 +16,7 @@
               </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="POST" enctype="multipart/form-data" action="{{ action('App\Http\Controllers\DashboardVisimisiController@store')}}">
+            <form method="POST" enctype="multipart/form-data" action="{{ action('App\Http\Controllers\DashboardVisidanmisiController@store')}}">
                 @csrf
                 <div class="card-body">
                   <label for="JudulLowongan">Judul Visi Misi</label>
@@ -29,7 +29,7 @@
                   <textarea class="textarea" rows="3" name="motivasi"></textarea>
             </div>
             <div class="modal-footer justify-content-between">
-              <a href="{{ route('visimisi.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
+              <a href="{{ route('visidanmisi.index') }}" class="btn btn-danger btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
               <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
               </form>
           </div>
