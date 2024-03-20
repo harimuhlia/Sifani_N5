@@ -17,9 +17,10 @@
           <li class="dropdown has-dropdown"><a href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dd-box-shadow">
               <li><a href="/#struktur">Stuktur BKK</a></li>
-              {{-- <li><a href="/#grafik">Grafik</a></li> --}}
+              <li><a href="/#visimisi">Visi Misi</a></li>
               <li><a href="/#testimoni">Testimoni</a></li>
               <li><a href="/#faq">FAQ</a></li>
+              <li><a href="/#contact">Kontak</a></li>
             </ul>
           </li>
           <li><a href="/#informasi">Informasi</a></li>
@@ -28,7 +29,7 @@
           <li><a href="/tracerstudy">Tracer Study</a></li>
           {{-- <li><a href="/#testimoni">Testimoni</a></li> --}}
           {{-- <li><a href="/#faq">FAQ</a></li> --}}
-          <li><a href="/#contact">Kontak</a></li>
+          <li><a href="/testimoni">Testimoni</a></li>
         </ul>
 
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

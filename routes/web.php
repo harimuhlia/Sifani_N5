@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Http\Controllers\DashboardLowonganController;
 use App\Http\Controllers\DashboardLowonganTersediaController;
+use App\Http\Controllers\DashboardTestimoniController;
 use App\Http\Controllers\DashboardVisidanmisiController;
 use App\Http\Controllers\DataPendaftarController;
 use App\Http\Controllers\InformasiController;
@@ -29,9 +30,7 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan']);
 Route::get('/lowongan/{lowongan:slug}', [LowonganController::class, 'show']);
-
-// Route::get('/informasi', [InformasiController::class, 'informasi']);
-// Route::get('/informasi/{informasi:slug}', [InformasiController::class, 'show']);
+Route::resource('dashboard/inbox', DashboardInboxController::class);
 
 // Harus Login
 Auth::routes();
@@ -40,13 +39,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth', 'CekRole:Administrator,Alumni'])->group(function () {
     Route::get('/informasi/{informasi:slug}', [InformasiController::class, 'show']);
     Route::get('/informasi', [InformasiController::class, 'informasi']);
+    Route::resource('dashboard/testimoni', DashboardTestimoniController::class);
 });
 
 Route::middleware(['auth', 'CekRole:Administrator'])->group(function () {
     Route::resource('/dashboard/lowongan', DashboardLowonganController::class);
     Route::resource('/dashboard/informasi', DashboardInformasiController::class);
     Route::resource('dashboard/visidanmisi', DashboardVisidanmisiController::class);
-    Route::resource('dashboard/inbox', DashboardInboxController::class);
+    // Route::resource('dashboard/inbox', DashboardInboxController::class);
 
     Route::get('/dashboard/pendaftar', [DataPendaftarController::class, 'index']);
     Route::get('/dashboard/pendaftar/{lowongan:slug}', [DataPendaftarController::class, 'pendaftar']);

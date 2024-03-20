@@ -6,6 +6,8 @@ use App\Models\Inbox;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Ramsey\Uuid\v1;
+
 class DashboardInboxController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class DashboardInboxController extends Controller
     public function index()
     {
         return view('dashboard.inbox.inbox_index',[
-            'users' => Auth::user(),
+            // 'users' => Auth::user(),
             'kotakmasuk' => Inbox::all()
         ]);
     }
@@ -41,7 +43,7 @@ class DashboardInboxController extends Controller
         
         Inbox::create($validated);
 
-        return redirect('/kontak')->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect()->route('inbox.create')->with('success', 'Alhamdulillah Berhasil Dibuat');
     }
     /**
      * Display the specified resource.
@@ -49,7 +51,7 @@ class DashboardInboxController extends Controller
     public function show(Inbox $inbox)
     {
         return view('dashboard.inbox.inbox_show', [
-            'users'     => Auth::user(),
+            // 'users'     => Auth::user(),
             'kotakmasuk'  => $inbox
         ]);
     }

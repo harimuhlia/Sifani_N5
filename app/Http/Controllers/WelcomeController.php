@@ -19,12 +19,13 @@ class WelcomeController extends Controller
         $informasiCount  = DB::table('informasis')->count();
         $alumniCount     = DB::table('users')->count();
         $visimisi = Visidanmisi::all();
+        $kotakmasuk = Inbox::all();
         $informasi = Informasi::orderBy('id', 'DESC')->paginate(6);
         $newLowongan = Lowongan::orderBy('id', 'DESC')->paginate(6);
         return view('welcome', [
-            // 'newLowongan' => Lowongan::orderBy('id', 'desc')->take(3)->get(),
             'titleHero' => "Sistem informasi BKK",
             'visimisi' => $visimisi,
+            'kotakmasuk' => $kotakmasuk,
             'newLowongan' => $newLowongan,
             'informasis' => $informasi,
             'pendaftarCount' => $pendaftarCount,

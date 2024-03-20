@@ -113,31 +113,34 @@
     </section><!-- End About Section -->
 
     <!-- Services Section - Home Page -->
-    <section id="VisiMisi" class="services">
+    <section id="visimisi" class="services">
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Visi Misi BKK</h2>
-        <p>Segala Informasi Terbaru akan kami sampaikan disini seperti, Jadwal Rekruitmen, Wawancara dan lain-lain.</p>
+        <p>Visi, Misi dan Program Kerja BKK SMK Negeri 5 Kabupaten Tangerang</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
         <div class="row gy-4">
           @foreach ($visimisi as $visimisi)
-          <blockquote class="blockquote">
-            <p class="mb-0">{{ $visimisi->visi }}</p>
-          </blockquote>
+          <i class="bi bi-quote quote-icon-left"></i>
+            <span>{{ $visimisi->visi }}</span>
+          <i class="bi bi-quote quote-icon-right"></i>
+            
+            {!! $visimisi->misi !!}
+            {!! $visimisi->proker !!}
           @endforeach
         </div>
       </div>
+    </div>
     </section><!-- End Services Section -->
 
     <!-- Stats Section - Home Page -->
     <section id="stats" class="stats">
 
       <img src="{{ asset('Frontend') }}//img/stats-bg2.jpg" alt="" data-aos="fade-in">
-
       <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
