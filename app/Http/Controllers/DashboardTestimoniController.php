@@ -13,10 +13,13 @@ class DashboardTestimoniController extends Controller
      */
     public function index()
     {
-        return view('dashboard.testimoni.testi_index', [
-            'users' => Auth::user(),
-            'testimoni' => Testimoni::all()
-        ]);
+        if (Auth::user()->role == 'Administrator') {
+            $testimoni = Testimoni::All();
+            return view('dashboard.testimoni.testi_index', compact('testimoni'));
+        } else {
+            $testimoni = Testimoni::where('user_id', auth()->user()->id)->get();
+            return view('dashboard.testimoni.testi_index', compact('testimoni'));
+        }
     }
 
     /**
@@ -34,7 +37,12 @@ class DashboardTestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $testimoni = new Testimoni();
+        $testimoni->user_id = Auth::user()->id;
+        $testimoni->star_rating = $request->rating;
+        $testimoni->testimoni= $request->testimoni;
+        $testimoni->save();
+        return redirect()->route('testimoni.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
     }
 
     /**
@@ -50,7 +58,8 @@ class DashboardTestimoniController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $testimoni = Testimoni::find($id);
+        return view('dashboard.testimoni.testi_Edit', compact('testimoni'));
     }
 
     /**
@@ -58,7 +67,12 @@ class DashboardTestimoniController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Testimoni::find($id)->update([
+            'star_rating' => $request->rating,
+            'testimoni' => $request->testimoni,
+        ]);
+
+       return redirect('dashboard/testimoni')->with('success', 'Alhamdulillah Berhasil Dibuat'); 
     }
 
     /**

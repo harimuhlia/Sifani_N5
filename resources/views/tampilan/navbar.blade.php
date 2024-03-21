@@ -41,7 +41,7 @@
             <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Tracer</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fas fa-box-open"></i> Testimoni</a>
+            <a href="/dashboard/testimoni/" class="nav-link"><i class="fas fa-box-open"></i> Testimoni</a>
           </li>
           {{-- <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-book-open"></i> Laporan</a>
