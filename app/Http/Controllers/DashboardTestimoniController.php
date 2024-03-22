@@ -50,7 +50,8 @@ class DashboardTestimoniController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $testimoni = Testimoni::find($id);
+        return view('dashboard.testimoni.testi_show', compact('testimoni'));
     }
 
     /**
@@ -78,8 +79,10 @@ class DashboardTestimoniController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $testimoni = Testimoni::findOrFail($id);
+        $testimoni->delete();
+        return redirect()->route('testimoni.index')->with('success', 'Alhamdulillah Berhasil Dihapus');
     }
 }

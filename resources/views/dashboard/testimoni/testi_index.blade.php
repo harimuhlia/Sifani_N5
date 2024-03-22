@@ -4,98 +4,6 @@
     
 @section('content')
 <section class="content">
-  <style>
-    .rate {
-        float: left;
-        height: 46px;
-        padding: 0 10px;
-        }
-        .rate:not(:checked) > input {
-        position:absolute;
-        display: none;
-        }
-        .rate:not(:checked) > label {
-        float:right;
-        width:1em;
-        overflow:hidden;
-        white-space:nowrap;
-        cursor:pointer;
-        font-size:30px;
-        color:#ccc;
-        }
-        .rated:not(:checked) > label {
-        float:right;
-        width:1em;
-        overflow:hidden;
-        white-space:nowrap;
-        cursor:pointer;
-        font-size:30px;
-        color:#ccc;
-        }
-        .rate:not(:checked) > label:before {
-        content: '★ ';
-        }
-        .rate > input:checked ~ label {
-        color: #ffc700;
-        }
-        .rate:not(:checked) > label:hover,
-        .rate:not(:checked) > label:hover ~ label {
-        color: #deb217;
-        }
-        .rate > input:checked + label:hover,
-        .rate > input:checked + label:hover ~ label,
-        .rate > input:checked ~ label:hover,
-        .rate > input:checked ~ label:hover ~ label,
-        .rate > label:hover ~ input:checked ~ label {
-        color: #c59b08;
-        }
-        .star-rating-complete{
-           color: #c59b08;
-        }
-        .rating-container .form-control:hover, .rating-container .form-control:focus{
-        background: #fff;
-        border: 1px solid #ced4da;
-        }
-        .rating-container textarea:focus, .rating-container input:focus {
-        color: #000;
-        }
-   
-        .rated {
-        float: left;
-        height: 46px;
-        padding: 0 10px;
-        }
-        .rated:not(:checked) > input {
-        position:absolute;
-        display: none;
-        }
-        .rated:not(:checked) > label {
-        float:right;
-        width:1em;
-        overflow:hidden;
-        white-space:nowrap;
-        cursor:pointer;
-        font-size:30px;
-        color:#ffc700;
-        }
-        .rated:not(:checked) > label:before {
-        content: '★ ';
-        }
-        .rated > input:checked ~ label {
-        color: #ffc700;
-        }
-        .rated:not(:checked) > label:hover,
-        .rated:not(:checked) > label:hover ~ label {
-        color: #deb217;
-        }
-        .rated > input:checked + label:hover,
-        .rated > input:checked + label:hover ~ label,
-        .rated > input:checked ~ label:hover,
-        .rated > input:checked ~ label:hover ~ label,
-        .rated > label:hover ~ input:checked ~ label {
-        color: #c59b08;
-        }
-   </style>  
 <!-- Tampilan Dashboard Index Testimoni Untuk Administrator --> 
   @if (Auth()->User()->role == 'Administrator')
   <div class="container-fluid">
@@ -125,16 +33,22 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->user->name }}</td>
-                  <td>Bintang <span class="badge badge-pill badge-warning">{{ $item->star_rating }}</span></td>
+                  <td>
+                    <div class="rated">
+                      @for($i=1; $i<=$item->star_rating; $i++)
+                      <label class="star-rating-complete" title="text">{{$i}} stars</label>
+                      @endfor
+                    </div>
+                  </td>
                   <td>{!! Str::limit("$item->testimoni", 20, ' ...') !!}</td></td>
                   <td>
-                      <a href="/dashboard/lowongan/{{ $item->id }}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
-                      <a href="/dashboard/testimoni/{{ $item->id }}/edit" class="btn btn-primary  btn-sm"><i class="far fa-edit"></i> Edit</a>
+                      <a href="/dashboard/testimoni/{{ $item->id }}" class="btn btn-success btn-sm"><i class="far fa-eye"></i></a>
+                      <a href="/dashboard/testimoni/{{ $item->id }}/edit" class="btn btn-primary  btn-sm"><i class="far fa-edit"></i></a>
                       {{-- <a href="/dashboard/lowongan/{{ $item->slug }}/edit" class="btn btn-warning  btn-sm"><i class="far fa-edit"></i></i></a> --}}
-                      <form id="{{ $item->id }}" action="/dashboard/lowongan/{{ $item->id }}" method="POST" class="d-inline">
+                      <form id="{{ $item->id }}" action="/dashboard/testimoni/{{ $item->id }}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
-                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus {{ $item->judul }} ?')"><i class="far fa-trash-alt"></i></button>
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus Testimoni Ini?')"><i class="far fa-trash-alt"></i></button>
                       </form>
                   </td>
               </tr>  
@@ -191,19 +105,11 @@
                 <tr data-widget="expandable-table" aria-expanded="false">
                   <td>Bintang Rating</td>
                   <td>
-                    Bintang <span class="badge badge-pill badge-warning">{{ $testi->star_rating }}</span>
-                    {{-- <div class="rate">
-                      <input type="radio" id="star5" class="rate" name="rating" value="{{ $testi->star_rating }}"/>
-                      <label for="star5" title="Istimewa">5 stars</label>
-                      <input type="radio" checked id="star4" class="rate" name="rating" value="{{ $testi->star_rating }}"/>
-                      <label for="star4" title="Sempurna">4 stars</label>
-                      <input type="radio" id="star3" class="rate" name="rating" value="{{ $testi->star_rating }}"/>
-                      <label for="star3" title="Sangat Baik">3 stars</label>
-                      <input type="radio" id="star2" class="rate" name="rating" value="{{ $testi->star_rating }}">
-                      <label for="star2" title="Baik">2 stars</label>
-                      <input type="radio" id="star1" class="rate" name="rating" value="{{ $testi->star_rating }}"/>
-                      <label for="star1" title="Cukup">1 star</label>
-                    </div> --}}
+                    <div class="rated">
+                      @for($i=1; $i<=$testi->star_rating; $i++)
+                      <label class="star-rating-complete" title="text">{{$i}} stars</label>
+                      @endfor
+                    </div>
                   </td>
                 </tr>
                 <tr data-widget="expandable-table" aria-expanded="false">
@@ -218,10 +124,10 @@
                     <td>Action</td>
                     <td>
                       <a href="/dashboard/testimoni/{{ $testi->id }}/edit" class="btn btn-primary  btn-sm"><i class="far fa-edit"></i> Edit</a>
-                        <form id="{{ $testi->name }}" action="/dashboard/testimoni/{{ $testi->name }}" method="POST" class="d-inline">
+                        <form id="{{ $testi->id }}" action="/dashboard/testimoni/{{ $testi->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus Visi dan Misi Ini?')"><i class="far fa-trash-alt"></i> Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus Testimoni Ini?')"><i class="far fa-trash-alt"></i> Hapus</button>
                         </form>
                     </td>
                   </tr>

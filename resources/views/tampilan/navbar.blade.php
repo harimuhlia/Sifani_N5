@@ -58,7 +58,7 @@
         <li class="nav-item dropdown">
           <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><strong>{{ Auth::User()->name }} ({{ Auth::User()->role }})</strong></a>
           <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-            <li><a href="#" class="dropdown-item"><i class="fas fa-user-check"></i> Profil</a></li>
+            <li><a href="{{ route('profil.index') }}" class="dropdown-item"><i class="fas fa-user-check"></i> Profil</a></li>
             @if (Auth()->User()->role == 'Administrator')
             <li><a href="#" class="dropdown-item"><i class="fas fa-user-plus"></i> Tambah Pengguna</a></li>
             <li><a href="#" class="dropdown-item"><i class="fas fa-tools"></i> Setting</a></li>

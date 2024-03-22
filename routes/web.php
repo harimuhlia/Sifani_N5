@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Http\Controllers\DashboardLowonganController;
 use App\Http\Controllers\DashboardLowonganTersediaController;
+use App\Http\Controllers\DashboardProfilController;
 use App\Http\Controllers\DashboardTestimoniController;
 use App\Http\Controllers\DashboardVisidanmisiController;
 use App\Http\Controllers\DataPendaftarController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,10 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan']);
 Route::get('/lowongan/{lowongan:slug}', [LowonganController::class, 'show']);
+
+Route::get('/testimoni', [TestimoniController::class, 'testimoni']);
+Route::get('/testimoni/{testimoni:id}', [TestimoniController::class, 'show']);
+
 Route::resource('dashboard/inbox', DashboardInboxController::class);
 
 // Harus Login
@@ -40,6 +46,7 @@ Route::middleware(['auth', 'CekRole:Administrator,Alumni'])->group(function () {
     Route::get('/informasi/{informasi:slug}', [InformasiController::class, 'show']);
     Route::get('/informasi', [InformasiController::class, 'informasi']);
     Route::resource('dashboard/testimoni', DashboardTestimoniController::class);
+    Route::resource('dashboard/profil', DashboardProfilController::class);
 });
 
 Route::middleware(['auth', 'CekRole:Administrator'])->group(function () {

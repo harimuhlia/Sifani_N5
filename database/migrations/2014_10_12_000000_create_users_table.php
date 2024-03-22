@@ -17,10 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('foto_profil')->nullable();
             $table->string('nis')->unique()->nullable();
-            $table->string('kelas')->unique()->nullable();
+            $table->string('kelas')->nullable();
             $table->enum('role',['Alumni','Administrator']);
             $table->enum('status_verifikasi',['BELUM','SUDAH']);
+            $table->text('alamat')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
