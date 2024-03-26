@@ -26,9 +26,9 @@
 						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
 							<div class="text w-100">
 								<h2>Selamat Datang!</h2>
-								<p>Di Aplikasi Pemilihan Ketua OSIS (PilketosApp) SMK Negeri 5 Kabupaten Tangerang</p>
+								<p>Di Aplikasi Sistem Informasi Alumni (Sifani) SMK Negeri 5 Kabupaten Tangerang</p>
                                 
-								<a href="#" class="btn btn-white btn-outline-white">Daftar</a>
+								<a href="/register" class="btn btn-white btn-outline-white">Daftar</a>
 							</div>
 			      </div>
 						<div class="login-wrap p-4 p-lg-5">

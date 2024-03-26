@@ -1,6 +1,6 @@
 @extends('tampilan.apputama')
-@section('title', 'Data Testimoni')
-@section('subtitle', 'Halaman Seluruh Data Testimoni')
+@section('title', 'Data Profil')
+@section('subtitle', 'Halaman Profil Pengguna')
 
 @section('content')
 <section class="content">
@@ -16,7 +16,7 @@
                     <img src="{{ asset('storage/' . $profilusers->foto_profil) }}" alt="Foto Profil" id="preview" class="img-fluid rounded mb-5" width="200px" height="200px">
                 @else
                     <img src="/folderassets/img/avatars/avatar.png" alt="Foto Profil" id="preview" class="img-fluid rounded mb-5" width="200px" height="200px">
-                    <p class="text-danger">Ini adalah foto Default, segera upload foto anda !</p>
+                    <p class="text-danger">Ini adalah foto Default, upload foto anda !</p>
                 @endif
               </div>
 
