@@ -57,28 +57,34 @@
         </div>
 
         <div class="col-lg-6">
-          <form action="{{ action('App\Http\Controllers\WelcomeController@store')}}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+          <form action="{{ action('App\Http\Controllers\DashboardInboxController@store')}}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
             @csrf
             <div class="row gy-4">
               <div class="col-md-6">
+                <div class="form-group">
                 <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama Lengkap Anda" required>
+                </div>
               </div>
               <div class="col-md-6 ">
+                <div class="form-group">
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Aktif Anda" required>
+                </div>
               </div>
               <div class="col-md-12">
+                <div class="form-group">
                 <input type="text" class="form-control @error('subjek') is-invalid @enderror" name="subjek" placeholder="Perihal Yang Akan Ditanyakan" required>
+                </div>
               </div>
               <div class="col-md-12">
+                <div class="form-group">
                 <textarea class="form-control @error('isipesan') is-invalid @enderror" name="isipesan" rows="6" placeholder="Silakan isi pesan anda" required></textarea>
-              </div>
-              <div class="col-md-12 text-center">
-                
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                <button type="submit">Send Message</button>
+                </div>
+            </div>
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="form-group col-md-12 text-center">
+                  <input type="submit" class="btn btn-primary" value="Send message">
               </div>
             </div>
           </form>

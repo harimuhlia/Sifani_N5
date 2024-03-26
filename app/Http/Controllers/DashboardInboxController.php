@@ -21,6 +21,14 @@ class DashboardInboxController extends Controller
         ]);
     }
 
+    public function kontak()
+    {
+        $formkontak = Inbox::all();
+        return view('kontak.formkontak', [
+            'formkontak'  => $formkontak
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -43,7 +51,7 @@ class DashboardInboxController extends Controller
         
         Inbox::create($validated);
 
-        return redirect()->route('inbox.create')->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect()->route('kontak.formkontak')->with('success', 'Alhamdulillah Berhasil Dibuat');
     }
     /**
      * Display the specified resource.

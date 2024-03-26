@@ -3,10 +3,8 @@
 @section('subtitle', 'Halaman Utama')
 
 @section('content')
-{{-- Dashboard Info BKK --}}
 <section class="content">
   <div class="container-fluid">
-    {{-- <h5 class="mb-2">Informasi BKK</h5> --}}
       <div class="row">
       <div class="col-md-3 col-sm-6 col-12">
       <div class="info-box">
@@ -49,25 +47,4 @@
     </div>
   </div>
 </div>
-@endsection
-
-
-@section('javascript')
-        <script>
-          $(function () {
-            $("#example1").DataTable({
-              "responsive": true, "lengthChange": false, "autoWidth": false,
-              "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-              "paging": true,
-              "lengthChange": false,
-              "searching": false,
-              "ordering": true,
-              "info": true,
-              "autoWidth": false,
-              "responsive": true,
-            });
-          });
-        </script>
 @endsection

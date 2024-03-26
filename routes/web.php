@@ -29,6 +29,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'index']);
+// Route::get('/kontak', [WelcomeController::class, 'kontak']);
+// Route::POST('/kontak', [WelcomeController::class, 'store'])->name('store');
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan']);
 Route::get('/lowongan/{lowongan:slug}', [LowonganController::class, 'show']);
@@ -37,6 +39,7 @@ Route::get('/testimoni', [TestimoniController::class, 'testimoni']);
 Route::get('/testimoni/{testimoni:id}', [TestimoniController::class, 'show']);
 
 Route::resource('dashboard/inbox', DashboardInboxController::class);
+Route::get('/kontak', [DashboardInboxController::class, 'kontak']);
 
 // Harus Login
 Auth::routes();

@@ -13,8 +13,8 @@
           </div>
           <div class="col-lg-5">
             <form action="#" class="sign-up-form d-flex" data-aos="fade-up" data-aos-delay="300">
-              <input type="text" class="form-control" placeholder="Enter email address">
-              <input type="submit" class="btn btn-primary" value="Sign up">
+              <input type="text" class="form-control" placeholder="Misalkan Loker Tangerang">
+              <input type="submit" class="btn btn-primary" value="Search">
             </form>
           </div>
         </div>
@@ -205,122 +205,56 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- Features Section - Home Page -->
-    {{-- <section id="features" class="features">
+    <!-- Recent-posts Loker Terbaru Section - Home Page -->
+    <section id="recent-posts" class="recent-posts">
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Features</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Loker Terbaru</h2>
+        <p>Pastikan Lowongan Kerja Yang Anda Cari Masih Dibuka, Jika Ada Yang Sesuai Dengan Minat Anda Untuk Segera Mendaftar</p>
       </div><!-- End Section Title -->
 
       <div class="container">
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>Corporis temporibus maiores provident</h3>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-            </p>
-            <a href="#" class="btn btn-get-started">Get Started</a>
-          </div>
-          <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-            <div class="image-stack">
-              <img src="{{ asset('Frontend') }}//img/features-light-1.jpg" alt="" class="stack-front">
-              <img src="{{ asset('Frontend') }}//img/features-light-2.jpg" alt="" class="stack-back">
-            </div>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-stretch justify-content-between features-item ">
-          <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
-            <img src="{{ asset('Frontend') }}//img/features-light-3.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
-            <h3>Sunt consequatur ad ut est nulla</h3>
-            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
-            <ul>
-              <li><i class="bi bi-check"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check"></i><span> Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check"></i> <span>Facilis ut et voluptatem aperiam. Autem soluta ad fugiat</span>.</li>
-            </ul>
-            <a href="#" class="btn btn-get-started align-self-start">Get Started</a>
-          </div>
-        </div><!-- Features Item -->
-
-      </div>
-
-    </section><!-- End Features Section --> --}}
-
-    <!-- Faq Section - Home Page -->
-
-    <section id="faq" class="faq">
-
-      <div class="container">
-
         <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="content px-xl-5">
-              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
-            </div>
+            @foreach ($newLowongan as $lowongan)
+                @php
+                    $end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $lowongan->batas_waktu);
+                    $diff = $end_date->diff(\Carbon\Carbon::now());
+                @endphp
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <article>
+              <div class="post-img">
+                <img src="{{ asset('storage/'.$lowongan->gambar) }}" alt="" class="img-fluid">
+              </div>
+              <p class="post-category">Minimarket</p>
+              <h2 class="title">
+                <a href="/lowongan/{{ $lowongan->slug }}">{{ $lowongan->judul }}</a>
+              </h2>
+              <div class="d-flex align-items-center">
+                <img src="{{ asset('Frontend') }}//img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <div class="post-meta">
+                  <p class="post-author">Maria Doe</p>
+                  <p class="post-date">
+                    <time datetime="Y-m-d H:i:s">Dipost {{ $lowongan->created_at->diffForhumans()}}</time>
+                  </p>
+                  <p class="post-category card-text text-danger">
+                    @if($diff->days > 0)
+                        Lowongan Ditutup: {{ $diff->days }} Hari Lagi
+                    @else
+                        Pendaftaran Di Tutup
+                    @endif
+                  </p>
+                </div>
+              </div>
+            </article>
           </div>
-
-          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="faq-container">
-              <div class="faq-item faq-active">
-                <h3><span class="num">1.</span> <span>Non consectetur a erat nam at lectus urna duis?</span></h3>
-                <div class="faq-content">
-                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">2.</span> <span>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</span></h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">3.</span> <span>Dolor sit amet consectetur adipiscing elit pellentesque?</span></h3>
-                <div class="faq-content">
-                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">4.</span> <span>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</span></h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">5.</span> <span>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</span></h3>
-                <div class="faq-content">
-                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-            </div>
-
-          </div>
+          @endforeach
+          <!-- End post list item -->
         </div>
-
+        <!-- End recent posts list -->
       </div>
 
-    </section><!-- End Faq Section -->
+    </section><!-- End Recent-posts Section -->
 
     <!-- Team Section - Home Page -->
     <section id="struktur" class="team">
@@ -443,24 +377,74 @@
 
     </section><!-- End Team Section -->
 
-    <!-- Call-to-action Section - Home Page -->
-    <section id="call-to-action" class="call-to-action">
+    <!-- Faq Section - Home Page -->
 
-      <img src="{{ asset('Frontend') }}//img/cta-bg.jpg" alt="">
+    <section id="faq" class="faq">
 
       <div class="container">
-        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-xl-10">
-            <div class="text-center">
-              <h3>Call To Action</h3>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a class="cta-btn" href="#">Call To Action</a>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="content px-xl-5">
+              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              </p>
             </div>
           </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="faq-container">
+              <div class="faq-item faq-active">
+                <h3><span class="num">1.</span> <span>Non consectetur a erat nam at lectus urna duis?</span></h3>
+                <div class="faq-content">
+                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">2.</span> <span>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</span></h3>
+                <div class="faq-content">
+                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">3.</span> <span>Dolor sit amet consectetur adipiscing elit pellentesque?</span></h3>
+                <div class="faq-content">
+                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">4.</span> <span>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</span></h3>
+                <div class="faq-content">
+                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">5.</span> <span>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</span></h3>
+                <div class="faq-content">
+                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+
+          </div>
         </div>
+
       </div>
 
-    </section><!-- End Call-to-action Section -->
+    </section><!-- End Faq Section -->
 
     <!-- Testimonials Section - Home Page -->
     <section id="testimoni" class="testimonials">
@@ -531,141 +515,22 @@
 
     </section><!-- End Testimonials Section -->
 
-    <!-- Recent-posts Section - Home Page -->
-    <section id="recent-posts" class="recent-posts">
+    <!-- Call-to-action Section - Home Page -->
+    <section id="call-to-action" class="call-to-action">
 
-      <!--  Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Loker Terbaru</h2>
-        <p>Pastikan Lowongan Kerja Yang Anda Cari Masih Dibuka, Jika Ada Yang Sesuai Dengan Minat Anda Untuk Segera Mendaftar</p>
-      </div><!-- End Section Title -->
+      <img src="{{ asset('Frontend') }}//img/cta-bg.jpg" alt="">
 
       <div class="container">
-        <div class="row gy-4">
-            @foreach ($newLowongan as $lowongan)
-                @php
-                    $end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $lowongan->batas_waktu);
-                    $diff = $end_date->diff(\Carbon\Carbon::now());
-                @endphp
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="post-img">
-                <img src="{{ asset('storage/'.$lowongan->gambar) }}" alt="" class="img-fluid">
-              </div>
-              <p class="post-category">Minimarket</p>
-              <h2 class="title">
-                <a href="/lowongan/{{ $lowongan->slug }}">{{ $lowongan->judul }}</a>
-              </h2>
-              <div class="d-flex align-items-center">
-                <img src="{{ asset('Frontend') }}//img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author">Maria Doe</p>
-                  <p class="post-date">
-                    <time datetime="Y-m-d H:i:s">Dipost {{ $lowongan->created_at->diffForhumans()}}</time>
-                  </p>
-                  <p class="post-category card-text text-danger">
-                    @if($diff->days > 0)
-                        Lowongan Ditutup: {{ $diff->days }} Hari Lagi
-                    @else
-                        Pendaftaran Di Tutup
-                    @endif
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-          @endforeach
-          <!-- End post list item -->
-        </div>
-        <!-- End recent posts list -->
-      </div>
-
-    </section><!-- End Recent-posts Section -->
-
-    <!-- Contact Section - Home Page -->
-    <section id="contact" class="contact">
-
-      <!--  Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Silakan Datang atau Hubungi kami dan Kirim Pesan Spesifik Melalui Form Kontak</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6">
-
-            <div class="row gy-4">
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="200">
-                  <i class="bi bi-geo-alt"></i>
-                  <h3>Address</h3>
-                  <p>A108 Adam Street</p>
-                  <p>New York, NY 535022</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="300">
-                  <i class="bi bi-telephone"></i>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
-                  <p>+1 6678 254445 41</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="400">
-                  <i class="bi bi-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@example.com</p>
-                  <p>contact@example.com</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="500">
-                  <i class="bi bi-clock"></i>
-                  <h3>Open Hours</h3>
-                  <p>Monday - Friday</p>
-                  <p>9:00AM - 05:00PM</p>
-                </div>
-              </div><!-- End Info Item -->
-
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3>Call To Action</h3>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <a class="cta-btn" href="#">Call To Action</a>
             </div>
-
           </div>
-
-          <div class="col-lg-6">
-            <form action="{{ action('App\Http\Controllers\DashboardInboxController@store')}}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              @csrf
-              <div class="row gy-4">
-                <div class="col-md-6">
-                  <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama Lengkap Anda" required>
-                </div>
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Aktif Anda" required>
-                </div>
-                <div class="col-md-12">
-                  <input type="text" class="form-control @error('subjek') is-invalid @enderror" name="subjek" placeholder="Perihal Yang Akan Ditanyakan" required>
-                </div>
-                <div class="col-md-12">
-                  <textarea class="form-control @error('isipesan') is-invalid @enderror" name="isipesan" rows="6" placeholder="Silakan isi pesan anda" required></textarea>
-                </div>
-                <div class="col-md-12 text-center">
-                  
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
         </div>
       </div>
-    </section><!-- End Contact Section -->
+
+    </section><!-- End Call-to-action Section -->
 @endsection

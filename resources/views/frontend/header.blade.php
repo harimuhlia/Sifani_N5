@@ -20,7 +20,7 @@
               <li><a href="/#visimisi">Visi Misi</a></li>
               <li><a href="/#testimoni">Testimoni</a></li>
               <li><a href="/#faq">FAQ</a></li>
-              <li><a href="/#contact">Kontak</a></li>
+              <li><a href="/kontak">Kontak</a></li>
             </ul>
           </li>
           <li><a href="/#informasi">Informasi</a></li>

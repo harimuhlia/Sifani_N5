@@ -15,7 +15,7 @@
                 @if ($profilusers->foto_profil)
                     <img src="{{ asset('storage/' . $profilusers->foto_profil) }}" alt="Foto Profil" id="preview" class="img-fluid rounded mb-5" width="200px" height="200px">
                 @else
-                    <img src="/folderassets/img/avatars/avatar.png" alt="Foto Profil" id="preview" class="img-fluid rounded mb-5" width="200px" height="200px">
+                    <img src="/Frontend/img/avatar.png" alt="Foto Profil" id="preview" class="img-fluid rounded mb-5" width="200px" height="200px">
                     <p class="text-danger">Ini adalah foto Default, upload foto anda !</p>
                 @endif
               </div>

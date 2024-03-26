@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('inboxes', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('subjek');
             $table->string('slug')->unique();
             $table->text('isipesan');
