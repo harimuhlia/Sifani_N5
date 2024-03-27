@@ -37,7 +37,8 @@
   <link rel="stylesheet" href="{{ asset('Template')}}/plugins/toastr/toastr.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="{{ asset('Template')}}/plugins/select2/css/select2.min.css">
-  
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="{{ asset('Template')}}/plugins/bs-stepper/css/bs-stepper.min.css">
 
 
 {{-- <!-- Google Font: Source Sans Pro -->

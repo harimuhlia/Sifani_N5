@@ -81,6 +81,8 @@
 <script src="{{ asset('Template')}}/plugins/toastr/toastr.min.js"></script>
 <!-- Select2 -->
 <script src="{{ asset('Template')}}/plugins/select2/js/select2.full.min.js"></script>
+<!-- BS-Stepper -->
+<script src="{{ asset('Template')}}/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 @yield('javascript')
 
 {{-- <!-- jQuery -->

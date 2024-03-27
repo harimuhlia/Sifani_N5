@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardLowonganController;
 use App\Http\Controllers\DashboardLowonganTersediaController;
 use App\Http\Controllers\DashboardProfilController;
 use App\Http\Controllers\DashboardTestimoniController;
+use App\Http\Controllers\DashboardTracerController;
 use App\Http\Controllers\DashboardVisidanmisiController;
 use App\Http\Controllers\DataPendaftarController;
 use App\Http\Controllers\InformasiController;
@@ -50,6 +51,7 @@ Route::middleware(['auth', 'CekRole:Administrator,Alumni'])->group(function () {
     Route::get('/informasi', [InformasiController::class, 'informasi']);
     Route::resource('dashboard/testimoni', DashboardTestimoniController::class);
     Route::resource('dashboard/profil', DashboardProfilController::class);
+    Route::resource('dashboard/tracer', DashboardTracerController::class);
 });
 
 Route::middleware(['auth', 'CekRole:Administrator'])->group(function () {

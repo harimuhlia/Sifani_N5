@@ -38,7 +38,7 @@
           </li>
           @endif
           <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Tracer</a>
+            <a href="/dashboard/tracer" class="nav-link"><i class="fas fa-chart-bar"></i> Tracer</a>
           </li>
           <li class="nav-item">
             <a href="/dashboard/testimoni/" class="nav-link"><i class="fas fa-box-open"></i> Testimoni</a>
