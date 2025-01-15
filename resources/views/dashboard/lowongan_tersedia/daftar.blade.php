@@ -30,6 +30,16 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="no_ak1" class="form-label">Nomor AK 1</label>
+                                    <input type="text" class="form-control @error('no_ak1') is-invalid @enderror" id="no_ak1" name="no_ak1">
+                                    @error('no_ak1')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="jurusan" class="form-label">Jurusan Sekolah</label>
                                     <input type="text" class="form-control @error('jurusan') is-invalid @enderror" id="jurusan" name="jurusan">
                                     @error('jurusan')

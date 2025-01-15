@@ -9,7 +9,7 @@ class Pendaftar extends Model
 {
     use HasFactory;
     // protected $guarded = ['id'];
-    protected $fillable = ['nama', 'jurusan', 'asal_sekolah', 'jenis_kelamin', 'kode_pendaftaran', 'user_id', 'lowongan_id'];
+    protected $fillable = ['nama', 'jurusan', 'asal_sekolah', 'jenis_kelamin', 'kode_pendaftaran', 'user_id', 'lowongan_id', 'no_ak1'];
     
     public function lowongan()
     {

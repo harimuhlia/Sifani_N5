@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pendaftars', function (Blueprint $table) {
             $table->id();
             $table->string('kode_pendaftaran');
+            $table->string('no_ak1')->nullable();
             $table->string('nama');
             $table->string('jurusan');
             $table->string('asal_sekolah');

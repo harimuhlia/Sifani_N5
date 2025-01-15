@@ -33,6 +33,7 @@ class DashboardLowonganTersediaController extends Controller
     public function store(Request $request)
     {   
         $validated = $request->validate([
+            'no_ak1'         => 'required',
             'nama'           => 'required',
             'jurusan'        => 'required',
             'asal_sekolah'   => 'required',

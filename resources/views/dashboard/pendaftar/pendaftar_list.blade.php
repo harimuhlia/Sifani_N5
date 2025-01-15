@@ -23,6 +23,7 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Kode Daftar</th>
+                    <th>Nomor AK1</th>
                     <th>Jurusan</th>
                     <th>Jenis Kelamin</th>
                     <th>Asal Sekolah</th>
@@ -34,6 +35,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->kode_pendaftaran }}</td>
+                    <td>{{ $item->no_ak1 }}</td>
                     <td>{{ $item->jurusan }}</td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->asal_sekolah }}</td>
@@ -45,6 +47,7 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Kode Daftar</th>
+                    <th>Nomor AK1</th>
                     <th>Jurusan</th>
                     <th>Jenis Kelamin</th>
                     <th>Asal Sekolah</th>
